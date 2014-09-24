@@ -1,7 +1,5 @@
 # Brand portal for BSkyB
 
-***
-
 ## Quick notes
 This repo contains the frontend code for the Internal brand asset management system build for BSkyB (https://www.believeinbetter.com)
 
@@ -11,8 +9,6 @@ Screenshots [here](screenshots)
 
 AngularJS, ngBoilerplate, UI Router, HTML5, CSS3, SASS / Compass, File API, Canvas, Plupload, jQuery, 
 Grunt, Bower 
-
-***
 
 ## Project structure
 
