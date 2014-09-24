@@ -1,0 +1,116 @@
+#wrap-brandhub-book {
+  .skycom-offset3 {
+    text-align: right;
+  }
+  .copy {
+    margin-top: 30px;
+    margin-bottom: 60px;
+    p {
+      margin-bottom: 15px;
+    }
+  }
+  .submit p {
+    margin-top: 15px;
+  }
+  .align-right {
+    text-align: right;
+  }
+  .wrap-slot-selector, .campaign-types {
+    display: inline-block;
+    label {
+      width: auto;
+      float: none;
+      left: auto;
+    }
+    p {
+      margin-bottom: 15px;
+    }
+  }
+  label {
+    display: inline-block;
+    left: 0;
+    width: auto;
+  }
+  .upload {
+    width: 221px;
+    display: inline-block;
+    .header span {
+      display: none;
+    }
+    .row {
+      margin: 0;
+      border: 1px solid #dcdcdc;
+      border-top: none;
+      padding-top: 18px;
+      padding-bottom: 18px;
+      display: block;
+      &:first-child {
+        border-top: 0;
+      }
+    }
+    a:hover {
+      text-decoration: underline;
+      div {
+        text-decoration: underline;
+      }
+    }
+    a {
+      background: #eaeaea;
+      position: relative;
+      font-size: 18px;
+      line-height: 21px;
+      color: #000;
+      & > div {
+        z-index: 1;
+      }
+    }
+    .progress {
+      position: absolute;
+      background: #C8E8FF;
+      height: 100%;
+      width: 0;
+      display: inline-block;
+      left: 0;
+      top: 0;
+      border-radius: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 0;
+    }
+    .title {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .arrow {
+      display: none;
+      content: " ";
+      position: absolute;
+      width: 30px;
+      height: 100%;
+      top: 0;
+      right: -30px;
+      background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/arrow.png") no-repeat;
+    }
+    .center {
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .right {
+      text-align: right;
+    }
+    .wrap-drop-zone {
+      border: none;
+    }
+  }
+  .drop-panel {
+    padding: 50px 0;
+  }
+  .date.past {
+    pointer-events: none;
+  }
+}

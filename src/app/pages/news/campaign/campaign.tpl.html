@@ -1,0 +1,72 @@
+<div id="wrap-page-news-campaign">
+
+  <div id="wrap-page-title" class="skycom-container">
+
+        <h1 class="section-title">
+          <span data-ng-bind="pageTitle"></span>
+          <a id="btn-feedback" data-tracking="false" href="javascript:void(0);" data-ng-click="utilitiesService.showFeedbackForm()"><i class="icon skycon-mail" aria-hidden="true"></i>Tell us what you think</a>
+        </h1>
+
+        <div id="base-styles-tab-contents" class="tabpanel selected">
+            <section class="tabcontents tabs-container page-nav">
+                <ul class="nav tabs clearfix">
+                    <li class="tab">
+                      <a href="/news" class="skycom-ellipsis internal-link has-badge">Weekly<span class="badge count red bounceIn animated" data-ng-bind="notifications.news" data-ng-show="notifications.news > 0"></span></a>
+                    </li>
+                    <li class="tab selected">
+                      <a href="/news/campaign" class="skycom-ellipsis internal-link has-badge">Campaign<span class="badge count red  bounceIn animated" data-ng-bind="notifications.campaigns" data-ng-show="notifications.campaigns > 0"></span></a>
+                    </li>
+                    <li class="tab">
+                      <a href="/news/campaign-library" class="skycom-ellipsis internal-link">Campaign Library</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+  </div>
+  
+  <div class="skycom-container campaigns-container">
+    <div data-ng-repeat="campaign in campaignsData.records" class="clearfix campaign">
+      <img class="featured" data-ng-if="campaign.data.image.full.length" data-ng-src="{{campaign.data.image.full}}" alt="{{campaign.data.title + ' featured image'}}" />
+      <div class="skycom-3 alpha clearfix" data-ng-if="campaign.data.video_id.length || campaign.data.campaign_assets_thumb.large.length || campaign.data.images.length">
+        <div data-ng-if="campaign.data.campaign_related_assets.length">
+          <a href="javascript:void(0);" data-ng-click="openAssets(campaign)">
+            <img  data-ng-if="campaign.data.campaign_assets_thumb.large.length" data-ng-src="{{campaign.data.campaign_assets_thumb.large}}" />
+          </a>
+          <p class="intro">
+            <a href="javascript:void(0);" data-ng-click="openAssets(campaign)" data-ng-bind="campaign.data.campaign_assets_title">
+            </a>
+          </p>
+        </div>
+        <div data-ng-if="campaign.data.video_id.length">
+          <a href="javascript:void(0);" data-ng-click="openVideo(campaign)">
+            <img data-ng-if="campaign.data.video_thumb.large.length" data-ng-src="{{campaign.data.video_thumb.large}}" />
+          </a>
+          <p class="intro">
+            <a href="javascript:void(0);" data-ng-click="openVideo(campaign)" data-ng-bind="campaign.data.video_title">
+            </a>
+          </p>
+        </div>
+        <div data-ng-if="campaign.data.images.length">
+          <a href="javascript:void(0);" data-ng-click="openGallery(campaign)" data-ng-bind="campaign.data.campaign_gallery_title">
+            <img data-ng-src="{{campaign.data.images[0].large}}" />
+          </a>
+          <p class="intro">
+            <a href="javascript:void(0);" data-ng-click="openGallery(campaign)" data-ng-bind="campaign.data.campaign_gallery_title"></a>
+          </p>
+        </div>
+        &nbsp;
+      </div>
+      <div data-ng-class="{'skycom-12 alpha': !campaign.data.video_id.length && !campaign.data.campaign_related_assets.length && !campaign.data.images.length, 'skycom-9': campaign.data.video_id.length || campaign.data.campaign_related_assets.length || campaign.data.images.length}">
+        <h2 class="skycom-12 alpha page-title" data-ng-bind="campaign.data.title"></h2>
+        <div  class="skycom-12 alpha wrap-content" data-ng-bind-html="campaign.data.content | toTrusted"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div data-ng-show="!completed" class="more ng-hide intro smaller"><a href="javascript:void(0);" data-ng-click="loadMore()">Load more Campaign News</a></div>
+
+  <div data-goto-top data-track-element=".campaigns-container"></div>
+
+</div>

@@ -1,0 +1,85 @@
+<div id="wrap-assets">
+
+  <div id="wrap-page-title" class="skycom-container">
+
+
+        <h1 class="section-title">
+          <span data-ng-bind="pageTitle"></span>
+          <a id="btn-feedback" data-tracking="false" href="javascript:void(0);" data-ng-click="utilitiesService.showFeedbackForm()"><i class="icon skycon-mail" aria-hidden="true"></i>Tell us what you think</a>
+        </h1>
+
+        <form class="sky-form searchForm" name="searchForm" novalidate autocomplete="off">
+          <div data-brand-typeahead="title"></div>
+        </form>
+
+        <div id="base-styles-tab-contents" class="tabpanel selected">
+            <section class="tabcontents tabs-container page-nav">
+                <ul class="nav tabs clearfix">
+                    <li class="tab ng-class:{'selected': $stateParams.mainCategory=='all'}"><a href="javascript:void(0);" data-ng-click="navigate('all');" class="skycom-ellipsis internal-link">All Assets</a></li>
+                    <li class="tab ng-class:{'selected': $stateParams.mainCategory=='master-brand'}"><a href="javascript:void(0);" data-ng-click="navigate('master-brand')" class="skycom-ellipsis internal-link">Master Brand</a></li>
+                    <li class="tab ng-class:{'selected': $stateParams.mainCategory=='channels'}"><a href="javascript:void(0);" data-ng-click="navigate('channels');" class="skycom-ellipsis internal-link">Channels</a></li>
+                    <li class="tab ng-class:{'selected': $stateParams.mainCategory=='products'}"><a href="javascript:void(0);" data-ng-click="navigate('products');" class="skycom-ellipsis internal-link">Products</a></li>
+                    <li class="tab ng-class:{'selected': $stateParams.mainCategory=='campaigns'}"><a href="javascript:void(0);" data-ng-click="navigate('campaigns');" class="skycom-ellipsis internal-link">Campaigns</a></li>
+                    <li class="tab ng-class:{'selected': $stateParams.mainCategory=='initiatives'}"><a href="javascript:void(0);" data-ng-click="navigate('initiatives');" class="skycom-ellipsis internal-link">Initiatives</a></li>
+                    <li class="tab ng-class:{'selected': $stateParams.mainCategory=='content'}"><a href="javascript:void(0);" data-ng-click="navigate('content');" class="skycom-ellipsis internal-link">Content</a></li>
+                    <li class="tab filter">
+                      <a id="btn-filter-assets" href="javascript:void(0);" data-ng-click="toggleFilters()" data-tracking-label="Filter - News">Filters<i class="icon colour" data-ng-class="{'skycon-chevron-down': !modelService.showFilters, 'skycon-chevron-up': modelService.showFilters}" aria-hidden="true"></i> </a>
+                    </li>
+                </ul> 
+            </section>
+        </div>
+
+  </div>
+  
+  <div data-ng-include="'components/filtersPanel/filtersPanel.tpl.html'"></div>  
+
+  <div class="skycom-container">
+
+    <div>
+    
+      <h2 class="section-title smaller count"><span data-ng-bind="total" data-ng-show="total != -1">&nbsp;</span><span data-ng-show="total == -1">0</span> <span class="intro smaller" data-ng-bind=" total !== 1 ? 'assets' : 'asset'"></span></h2>
+
+      <div class="ng-hide notice" data-ng-show="$stateParams.mainCategory=='content' && modelService.pages.settings.content.notice_copy_default.length">
+        <div data-ng-bind-html="modelService.pages.settings.content.notice_copy_default | toTrusted"></div>
+      </div>
+
+      <div data-infinite-scroll="loadMore()" data-infinite-scroll-immediate-check="false" data-infinite-scroll-disabled="loading" infinite-scroll-distance="1.3" class="wrap-assets-grid clearfix">
+        
+        <div class="skycom-3 wrap-item ng-class:{'alpha': !($index % 4), 'fadein-slide-vertical': !asset.cached}" data-ng-repeat="asset in data">
+          <div>
+            <a href="javascript:void(0);" data-ng-href="/assets/view/{{asset.id}}"><div data-rn-lazy-background="{{asset.data.thumb}}" data-rn-lazy-loading-class="is-loading" data-ng-class="{'noscale':!asset.data.thumb_scaled, 'dark':asset.data.asset_dark_background}"></div></a>
+            <p><strong><span title="{{asset.data.title}}" data-ng-bind="asset.data.title"></span></strong></p>
+            <p><span>Asset ID: </span><span data-ng-bind="asset.id"></span></p>
+            <p><span>Date: </span><span data-ng-bind="asset.data.date_created * 1000 | date:'dd MMMM yyyy'" title="{{asset.data.date_created}}"></span></p>
+            <p><span>File type: </span><span data-ng-bind="asset.data.filetype[0].data.title" title="{{asset.data.filetype[0].data.title}}"></span></p>
+            <p><span>File size: </span><span data-ng-bind="asset.data.asset_filesize_pretty" title="{{asset.data.asset_filesize_pretty}}"></span></p>
+            <p><span>Owner: </span><span data-ng-bind="asset.data.owner.data.first_name + ' ' + asset.data.owner.data.last_name" title="{{asset.data.owner.data.first_name + ' ' + asset.data.owner.data.last_name}}"></span></p>
+            <div class="wrap-actions clearfix">
+
+              <p><a href="javascript:void(0);" data-ng-click="basketAdd(asset)"><i class="icon skycon-plus-circle colour" aria-hidden="true"></i>Add to basket</a></p>
+
+              <p class="right" data-ng-show="modelService.user.isSuperuser"><a href="javascript:void(0);" data-ng-href="/assets/edit/{{asset.id}}"><i class="icon brandcon-edit"></i>Edit</a></p>
+              
+              <p><a target="_self" href="javascript:void(0);" data-ng-href="{{modelService.cms.config.urls.assetsHttpHost + '/api/download/single/' + asset.id}}" download="{{asset.title}}" data-tracking="false"><i class="icon brandcon-download colour" aria-hidden="true"></i>Download</a></p>
+              
+              <p class="right" data-ng-show="modelService.user.isSuperuser"><a href="javascript:void(0);" data-ng-click="archive(asset.id, $index)" class="delete"><i class="icon brandcon-folder"></i>Archive</a></p>  
+              
+            </div>
+          </div>
+        </div>
+
+        <div data-no-results-panel data-data="data" data-ng-show="!data.length && total != -1"></div>
+
+        <div class="skycom-12 loader ng-hide" data-ng-show="loading">
+          <div class="brandcon-loader"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div data-goto-top data-track-element=".wrap-assets-grid"></div>
+
+</div>

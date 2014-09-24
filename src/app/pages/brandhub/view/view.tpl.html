@@ -1,0 +1,183 @@
+<div id="wrap-brandhub-view">
+
+  <div id="wrap-page-title" class="skycom-container">
+
+        <h1 class="section-title">Admin</h1>
+
+        <div id="base-styles-tab-contents" class="tabpanel selected">
+            <section class="tabcontents tabs-container page-nav">
+                <ul class="nav tabs clearfix">
+                    <li class="tab">
+                      <a href="/admin/activity" class="skycom-ellipsis internal-link">Activity</a>
+                    </li>
+                    <li class="tab">
+                      <a href="/admin/access" class="skycom-ellipsis internal-link">Access</a>
+                    </li>
+                    <li class="tab">
+                      <a href="/admin/assets/awaiting" class="skycom-ellipsis internal-link">Approve</a>
+                    </li>
+                    <li class="tab">
+                      <a data-ng-href="/content/page/?news={{notifications.total}}" target="_self" class="skycom-ellipsis internal-link" data-tracking="false">Edit</a>
+                    </li>
+                    <li class="tab selected">
+                      <a href="/brandhub/view" class="skycom-ellipsis internal-link">Brand hub</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+  </div>
+
+
+  <div class="skycom-container">
+
+    <nav class="clearfix">
+      <h2 class="section-title smaller skycom-10">
+        <a href="javascript:void(0);" data-ng-click="prev()" class="icon">
+          <i class=" skycon-arrow-left" aria-hidden="true"></i>
+        </a>
+        <span data-ng-bind="selectedDate * 1000 | date:'MMMM yyyy'"></span>
+        <a href="javascript:void(0);" data-ng-click="next()" class="icon">
+          <i class=" skycon-arrow-right" aria-hidden="true"></i>        
+        </a>
+        <span data-ng-pluralize 
+          count="brandHubActivities.totalBookings" 
+          when="{'0': 'no bookings',
+                'one': '1 booking',
+                'other': '{} bookings'}">
+        </span>
+      </h2>
+      <p class="skycom-2 align-right">
+        <a class="btn btn-primary" data-ng-click="cancelSession()">Cancel Session</a>
+      </p>
+    </nav>  
+
+    <div class="brand-hub clearfix" data-ng-class="{'full': brandHubActivities.more}">
+      <div>
+        <div class="wrap-day clearfix" data-ng-repeat="day in brandHubActivities.data | object2Array | orderBy:'dayNo'">
+          
+          <div data-ng-if="day.empty"> 
+            <header class="clearfix">
+              <div class="skycom-2"><p class="cushioned head-date">Date</p></div>
+              <div class="skycom-10">
+                <div class="skycom-1"><p class="cushioned no-ellipsis">Time</p></div>
+                <div class="skycom-2"><p class="cushioned">Name</p></div>
+                <div class="skycom-2"><p class="cushioned">Subject</p></div>
+                <div class="skycom-2"><p class="cushioned no-ellipsis">Campaign date</p></div>
+                <div class="skycom-2"><p class="cushioned">Deadline</p></div>
+                <div class="skycom-2"><p class="cushioned">Phone no.</p></div>
+                <div class="skycom-1"><p class="cushioned">&nbsp;</p></div>
+              </div>
+            </header>
+
+            <div class="skycom-2 alpha day">
+              <div class="cushioned">
+                <p data-ng-class="{'under-10': day.dayNo < 10}" data-ng-bind="day.dayName"></p>
+                <strong data-ng-bind="day.dayNo < 10 ? '0' + day.dayNo : day.dayNo"></strong>
+              </div>
+            </div>
+            
+            <div class="skycom-10 available">
+              <div class="skycom-1"><p class="cushioned no-ellipsis">2:00pm</p></div>
+              <div class="skycom-11"><p class="cushioned">STILL AVAILABLE</p></div>
+            </div>
+
+            <div class="skycom-10 available">
+              <div class="skycom-1"><p class="cushioned no-ellipsis">2:15pm</p></div>
+              <div class="skycom-11"><p class="cushioned">STILL AVAILABLE</p></div>
+            </div>
+
+            <div class="skycom-10 available">
+              <div class="skycom-1"><p class="cushioned no-ellipsis">2:30pm</p></div>
+              <div class="skycom-11"><p class="cushioned">STILL AVAILABLE</p></div>
+            </div>
+
+            <div class="skycom-10 available">
+              <div class="skycom-1"><p class="cushioned no-ellipsis">2:45pm</p></div>
+              <div class="skycom-11"><p class="cushioned">STILL AVAILABLE</p></div>
+            </div>
+
+          </div>
+
+          <div data-ng-if="!day.empty">
+
+            <header class="clearfix">
+              <div class="skycom-2"><p class="cushioned head-date">Date</p></div>
+              <div class="skycom-10">
+                <div class="skycom-1"><p class="cushioned no-ellipsis">Time</p></div>
+                <div class="skycom-2"><p class="cushioned">Name</p></div>
+                <div class="skycom-2"><p class="cushioned">Subject</p></div>
+                <div class="skycom-2"><p class="cushioned no-ellipsis">Campaign date</p></div>
+                <div class="skycom-2"><p class="cushioned">Deadline</p></div>
+                <div class="skycom-2"><p class="cushioned">Phone no.</p></div>
+                <div class="skycom-1"><p class="cushioned">&nbsp;</p></div>
+              </div>
+            </header>
+
+            <div class="skycom-2 alpha day">
+              <div class="cushioned">
+                <p data-ng-class="{'under-10': day.dayNo < 10}" data-ng-bind="day.dayName"></p>
+                <strong data-ng-bind="day.dayNo < 10 ? '0' + day.dayNo : day.dayNo"></strong>
+              </div>
+            </div>
+            
+            <div class="skycom-10" data-ng-class="{'booked row': day['00']}">
+              <div class="skycom-1" data-ng-class="{'available': !day['00']}"><p class="cushioned no-ellipsis">2:00pm</p></div>
+              <div class="skycom-11" data-ng-if="!day['00']"><p class="cushioned">STILL AVAILABLE</p></div>
+              <div class="skycom-10" data-ng-if="day['00'].title=='cancelled'"> <p class="cushioned">CANCELLED</p></div>
+
+              <div class="skycom-2" data-ng-click="showBooking(day['00'])" data-ng-if="day['00'] &&  day['00'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['00'].first_name + ' ' + day['00'].last_name | checkEmpty" title="{{day['00'].first_name + ' ' + day['00'].last_name}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['00'])" data-ng-if="day['00'] &&  day['00'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['00'].title | checkEmpty" title="{{day['00'].title}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['00'])" data-ng-if="day['00'] &&  day['00'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['00'].date_in_market | checkEmpty" title="{{day['00'].date_in_market}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['00'])" data-ng-if="day['00'] &&  day['00'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['00'].deadline | checkEmpty" title="{{day['00'].deadline}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['00'])" data-ng-if="day['00'] &&  day['00'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['00'].phone | checkEmpty" title="{{day['00'].phone}}"></p></div>
+              <div class="skycom-1" data-ng-if="day['00']"><a href="javascript:void(0);" data-ng-click="deleteBooking(day['00'].id)" class="clean"><p class="cushioned icon"><i class=" brandcon-delete" aria-hidden="true"></i></p></a></div>
+            </div>
+
+            <div class="skycom-10" data-ng-class="{'booked row': day['15']}">
+              <div class="skycom-1" ><p class="cushioned no-ellipsis">2:15pm</p></div>
+              <div class="skycom-11" data-ng-if="!day['15']"><p class="cushioned">STILL AVAILABLE</p></div>
+              <div class="skycom-10" data-ng-if="day['15'].title=='cancelled'"><p class="cushioned">CANCELLED</p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['15'])" data-ng-if="day['15'] &&  day['15'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['15'].first_name + ' ' + day['15'].last_name | checkEmpty" title="{{day['15'].first_name + ' ' + day['15'].last_name}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['15'])" data-ng-if="day['15'] &&  day['15'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['15'].title | checkEmpty" title="{{day['15'].title}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['15'])" data-ng-if="day['15'] &&  day['15'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['15'].date_in_market | checkEmpty" title="{{day['15'].date_in_market}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['15'])" data-ng-if="day['15'] &&  day['15'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['15'].deadline | checkEmpty" title="{{day['15'].deadline}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['15'])" data-ng-if="day['15'] &&  day['15'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['15'].phone | checkEmpty" title="{{day['15'].phone}}"></p></div>
+              <div class="skycom-1" data-ng-if="day['15']"><a href="javascript:void(0);" data-ng-click="deleteBooking(day['15'].id)" class="clean"><p class="cushioned icon"><i class=" brandcon-delete" aria-hidden="true"></i></p></a></div>
+            </div>
+
+            <div class="skycom-10" data-ng-class="{'booked row': day['30']}">
+              <div class="skycom-1" data-ng-class="{'available': !day['30']}"><p class="cushioned no-ellipsis">2:30pm</p></div>
+              <div class="skycom-11" data-ng-if="!day['30']"><p class="cushioned">STILL AVAILABLE</p></div>
+              <div class="skycom-10" data-ng-if="day['30'].title=='cancelled'"><p class="cushioned">CANCELLED</p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['30'])" data-ng-if="day['30'] &&  day['30'].title!='cancelled'" ><p class="cushioned" data-ng-bind="day['30'].first_name + ' ' + day['15'].last_name | checkEmpty" title="{{day['15'].first_name + ' ' + day['15'].last_name}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['30'])" data-ng-if="day['30'] &&  day['30'].title!='cancelled'" ><p class="cushioned" data-ng-bind="day['30'].title | checkEmpty" title="{{day['30'].title}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['30'])" data-ng-if="day['30'] &&  day['30'].title!='cancelled'" ><p class="cushioned" data-ng-bind="day['30'].date_in_market | checkEmpty" title="{{day['30'].date_in_market}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['30'])" data-ng-if="day['30'] &&  day['30'].title!='cancelled'" ><p class="cushioned" data-ng-bind="day['30'].deadline | checkEmpty" title="{{day['30'].deadline}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['30'])" data-ng-if="day['30'] &&  day['30'].title!='cancelled'" ><p class="cushioned" data-ng-bind="day['30'].phone | checkEmpty" title="{{day['30'].phone}}"></p></div>
+              <div class="skycom-1" data-ng-if="day['30']"><a href="javascript:void(0);" data-ng-click="deleteBooking(day['30'].id)" class="clean"><p class="cushioned icon"><i class=" brandcon-delete" aria-hidden="true"></i></p></a></div>
+            </div>
+
+            <div class="skycom-10" data-ng-class="{'booked row': day['45']}">
+              <div class="skycom-1" data-ng-class="{'available': !day['45']}"><p class="cushioned no-ellipsis">2:45pm</p></div>
+              <div class="skycom-11 " data-ng-if="!day['45']"><p class="cushioned">STILL AVAILABLE</p></div>
+              <div class="skycom-10" data-ng-if="day['45'].title=='cancelled'"><p class="cushioned">CANCELLED</p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['45'])" data-ng-if="day['45'] &&  day['45'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['45'].first_name + ' ' + day['15'].last_name | checkEmpty" title="{{day['15'].first_name + ' ' + day['15'].last_name}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['45'])" data-ng-if="day['45'] &&  day['45'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['45'].title | checkEmpty" title="{{day['45'].title}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['45'])" data-ng-if="day['45'] &&  day['45'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['45'].date_in_market | checkEmpty" title="{{day['45'].date_in_market}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['45'])" data-ng-if="day['45'] &&  day['45'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['45'].deadline | checkEmpty" title="{{day['45'].deadline}}"></p></div>
+              <div class="skycom-2" data-ng-click="showBooking(day['45'])" data-ng-if="day['45'] &&  day['45'].title!='cancelled'"><p class="cushioned" data-ng-bind="day['45'].phone | checkEmpty" title="{{day['45'].phone}}"></p></div>
+              <div class="skycom-1" data-ng-if="day['45']"><a href="javascript:void(0);" data-ng-click="deleteBooking(day['45'].id)" class="clean"><p class="cushioned icon"><i class=" brandcon-delete" aria-hidden="true"></i></p></a></div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div data-goto-top data-track-element="#wrap-brandhub-view"></div>
+
+</div>

@@ -1,0 +1,251 @@
+#wrap-page-asset-edit {
+  margin-bottom: 60px;
+  .content {
+    padding-left: 0;
+    & > div {
+      margin-right: 15px;
+      padding-left: 0;
+      border: 1px solid #dcdcdc;
+    }
+  }
+  .btn-back {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 23px;
+    &,&:hover {
+      text-decoration: none;
+    }
+  }
+  .wrap-drop-zone {
+    border: 0;
+    & > div:first-child {
+      border: 1px solid $color-border-gray;
+    }
+    img {
+      display: block;
+      width: 100%;
+      margin-top: 15px;
+    }
+    &.preview {
+      .drop-panel {
+        display: none;
+      }
+    }
+  }
+  .wrap-lazy-img {
+    background: #fff;
+    &.dark {
+      background: $color-border-gray;
+    }
+  }
+  textarea {
+    width: 100%;
+  }
+  .badge.blue {
+    width: 34px;
+    height: 34px;
+    line-height: 34px;
+    border-radius: 34px;
+    font-size: 20px;
+  }
+  .btn-thumb-default {
+    float: right;
+    margin-right: 0;
+  }
+  .content {
+    .asset-to-replace {
+      margin-top: 15px;
+      &.has-results {
+        input {
+          border-radius: 5px 5px 0 0;
+          border: 0;
+          box-shadow: none;
+          padding: 0 15px;
+        }
+      }
+      .not-found {
+        margin-top: 10px;
+      }
+      .asset {
+        margin-top: 15px;
+        cursor: pointer;
+        label {
+          float: right;
+          margin-right: -4px;
+        }
+        .wrap-lazy-img {
+          margin-bottom: 10px;
+        }
+      }
+      input {
+        display: block;
+        width: 100%;
+      }
+      .icon {
+        position: relative;
+        a, i {
+          color: $link;
+        }
+        a {
+          margin: 0;
+          position: absolute;
+          top: 5px;
+          right: 15px;
+        }
+      }
+      .separator {
+        display: inline-block;
+        padding: 0 15px;
+      }
+      .error {
+        padding-left: 5px;
+      }
+      a {
+        margin-top: 25px;
+        text-align: center;
+      }
+      .notice {
+        background: $white;
+        padding: 0 15px 15px 15px;
+        border-radius: 0 0 5px 5px;
+        position: relative;
+        overflow: hidden;
+        .loading {
+          position: absolute;
+          background: $white;
+          background: rgba(255, 255, 255, 0.8);
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          top: 1px;
+          left: 0;
+          text-align: center;
+          line-height: 100%;
+          border-radius: 5px;
+          .spinner-blue {
+            position: absolute;
+            top: 38%;
+            left: 46%;
+          }
+        }
+      }
+      .border {
+        border-top: 1px solid $color-border-gray;
+        margin-bottom: 20px;
+      }
+      .results {
+        margin-bottom: 10px;
+      }
+      p.selected {
+        background: $color-border-gray;
+        padding: 7px;
+      }
+    }
+    .btn-thumb-default {
+      float: right;
+      margin-right: 15px;
+    }
+    .wrap-file-drop-panel {
+      border: 0;
+      &.preview {
+        .drop-panel {
+          display: none;
+        }
+      }
+      .header {
+        .btn {
+          margin: 15px 15px 15px 0;
+        }
+        .btn-thumb-default {
+          margin-right: 0;
+        }
+      }
+    }
+    & > div {
+      position: relative;
+      padding: 30px;
+      background: #eaeaea;
+      min-height: 232px;
+      border: 1px solid #dcdcdc;
+    }
+    .title {
+      position: relative;
+      input {
+        display: block;
+        width: 100%;
+        line-height: 25px;
+        margin: 0;
+        font: 25px SkyTextRegular, Helvetica, Arial, sans-serif;
+        color: #333333;
+        padding-right: 63px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .edit {
+        right: -14px;
+      }
+    }
+    .edit {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $link;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .row {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .intro {
+      margin-top: 30px;
+      margin-bottom: 15px;
+      & + p {
+        margin-bottom: 15px;
+      }
+    }
+    .spacing {
+      margin-top: 30px;
+    }
+    .header {
+      margin-bottom: 0;
+    }
+    label {
+      font-weight: normal;
+    }
+    ul.h {
+      display: block;
+    }
+    li {
+      width: 25%;
+      margin: 0 0 5px;
+    }
+    .buttons {
+      margin-top: 35px;
+      p {
+        margin-top: 15px;
+      }
+      .error {
+        margin-left: 0;
+      }
+    }
+    .two-columns {
+      li {
+        width: 50%;
+      }
+    }
+    .one-column {
+      li {
+        width: 100%;
+      }
+    }
+    .three-columns {
+      li {
+        width: 33.3%;
+      }
+    }
+  }
+}

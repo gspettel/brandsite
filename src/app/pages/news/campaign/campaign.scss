@@ -1,0 +1,70 @@
+#wrap-page-news-campaign {
+  .featured {
+    margin-bottom: 45px;
+  }
+  img {
+    width: 100%;
+  }
+  .skycom-3 {
+    div {
+      margin-top: 60px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    .intro {
+      margin: 10px 0;
+    }
+  }
+  .skycom-9, .skycom-12.alpha {
+    h2.page-title {
+      margin: -9px 0 15px;
+    }
+    div, p {
+      line-height: 1.4;
+      font-size: 19px;
+    }
+    p {
+      padding: 7px 0;
+    }
+  }
+  .campaign {
+    padding: 90px 0;
+    border-bottom: 1px solid $key-line;
+    &:first-child {
+      padding-top: 10px;
+    }
+  }
+  .more {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 0;
+    height: 120px;
+    padding-top: 60px;
+    background: $background-dark url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/gradient1.png") no-repeat top center;
+    a {
+      vertical-align: top;
+    }
+  }
+  h4 {
+    font-size: 26px;
+    line-height: 36px;
+    margin: 20px 0;
+  }
+  pre {
+    line-height: 36px;
+    margin: 20px 0;
+  }
+  .wrap-content {
+    img {
+      height: auto !important;
+      max-width: 100%;
+    }
+    ul {
+      margin-left: 23px;
+      li {
+        list-style-type: disc;
+      }
+    }
+  }
+}

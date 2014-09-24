@@ -1,0 +1,101 @@
+<div id="wrap-page-news-campaign-library">
+
+  <div id="wrap-page-title" class="skycom-container">
+
+        <h1 class="section-title">
+          <span data-ng-bind="pageTitle"></span>
+          <a id="btn-feedback" data-tracking="false" href="javascript:void(0);" data-ng-click="utilitiesService.showFeedbackForm()"><i class="icon skycon-mail" aria-hidden="true"></i>Tell us what you think</a>
+        </h1>
+
+        <form class="sky-form searchForm" name="searchForm" novalidate autocomplete="off">
+          <div data-brand-typeahead="title" data-type="campaigns"></div>
+        </form>
+
+        <div id="base-styles-tab-contents" class="tabpanel selected">
+            <section class="tabcontents tabs-container page-nav">
+                <ul class="nav tabs clearfix">
+                    <li class="tab">
+                      <a href="/news" class="skycom-ellipsis internal-link has-badge">Weekly<span class="badge count red" data-ng-bind="notifications.news" data-ng-show="notifications.news > 0"></span></a>
+                    </li>
+                    <li class="tab">
+                      <a href="/news/campaign" class="skycom-ellipsis internal-link has-badge">Campaign<span class="badge count red" data-ng-bind="notifications.campaigns" data-ng-show="notifications.campaigns > 0"></span></a>
+                    </li>
+                    <li class="tab selected">
+                      <a href="/news/campaign-library" class="skycom-ellipsis internal-link">Campaign Library</a>
+                    </li>
+                    <li class="tab filter">
+                      <a id="btn-filter-assets" href="javascript:void(0);" data-ng-click="toggleFilters()" data-tracking-label="Filter - News">Filters<i class="icon colour" data-ng-class="{'skycon-chevron-down': !modelService.showFilters, 'skycon-chevron-up': modelService.showFilters}" aria-hidden="true"></i> </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+  </div>
+
+  <div data-ng-include="'components/filtersPanel/campaigns/filtersPanelCampaigns.tpl.html'"></div>
+  
+  <div class="skycom-container campaigns-container">
+
+    <h2 class="section-title smaller count" data-ng-show="campaignsData.total != -1"><span data-ng-bind="campaignsData.total" ></span> <span class="intro smaller" data-ng-bind="campaignsData.total !== 1 ? 'campaigns' : 'campaign'"></span></h2>
+
+    <div id="campaign-{{campaign.id}}" data-ng-repeat="campaign in campaignsData.records" class="clearfix campaign">
+
+      <div data-ng-show="!campaign.expanded" class="compact">
+        <img class="skycom-5" data-ng-src="{{campaign.data.image.large}}" alt="{{campaign.data.title + ' featured image'}}" />
+        <div class="skycom-7">
+          <h2 class="skycom-12 alpha page-title" data-ng-bind="campaign.data.title"></h2>
+          <div  class="skycom-12 alpha">
+            <p data-ng-bind="campaign.data.excerpt"></p>
+            <p><a href="javascript:void(0);" class="read-more" data-ng-click="select(campaign)"><i class="icon skycon-chevron colour" aria-hidden="true"></i>Read more</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div data-ng-show="campaign.expanded"  class="compact expanded">
+        <img class="featured" data-ng-src="{{campaign.data.image.full}}" alt="{{campaign.data.title + ' featured image'}}" />
+        <div class="skycom-3 alpha clearfix">
+          <div data-ng-if="campaign.data.campaign_related_assets.length">
+            <a href="javascript:void(0);" data-ng-click="openAssets(campaign)">
+              <img data-ng-src="{{campaign.data.campaign_assets_thumb.large}}" />
+            </a>
+            <p class="intro">
+              <a href="javascript:void(0);" data-ng-click="openAssets(campaign)" data-ng-bind="campaign.data.campaign_assets_title">
+              </a>
+            </p>
+          </div>
+          <div data-ng-if="campaign.data.video_id.length">
+            <a href="javascript:void(0);" data-ng-click="openVideo(campaign)">
+              <img data-ng-src="{{campaign.data.video_thumb.large}}" />
+            </a>
+            <p class="intro">
+              <a href="javascript:void(0);" data-ng-click="openVideo(campaign)" data-ng-bind="campaign.data.video_title">
+              </a>
+            </p>
+          </div>
+          <div data-ng-if="campaign.data.images.length" data-ng-if="campaign.data.images.length">
+            <a href="javascript:void(0);" data-ng-click="openGallery(campaign)">
+              <img data-ng-src="{{campaign.data.images[0].large}}" />
+            </a>
+            <p class="intro">
+              <a href="javascript:void(0);" data-ng-click="openGallery(campaign)" data-ng-bind="campaign.data.campaign_gallery_title">
+              </a>
+            </p>
+          </div>
+          &nbsp;
+        </div>
+        <div data-ng-class="{'skycom-12 alpha full': !campaign.data.video_id.length && !campaign.data.campaign_assets_thumb.large.length && !campaign.data.images.length, 'skycom-9': campaign.data.video_id.length || campaign.data.campaign_assets_thumb.large.length || campaign.data.images.length}">
+          <h2 class="skycom-12 alpha page-title" data-ng-bind="campaign.data.title"></h2>
+          <div  class="skycom-12 alpha wrap-content" data-ng-bind-html="campaign.data.content | toTrusted"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div data-ng-show="!completed" class="more ng-hide intro smaller"><a href="javascript:void(0);" data-ng-click="loadMore()">Load more results</a></div>  
+
+  <div data-goto-top data-track-element=".campaigns-container"></div>
+
+</div>

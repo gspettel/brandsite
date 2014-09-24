@@ -1,0 +1,453 @@
+#wrap-our-brand {
+  &, p {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  img {
+    margin-bottom: -8px;
+  }
+  section {
+    position: relative;
+  }
+  p {
+    margin-top: 35px;
+  }
+  h2, img {
+    margin-bottom: 35px;
+    &.no-gap {
+      margin-bottom: 0;
+    }
+  }
+  h2 {
+    margin-top: 0;
+    line-height: 29px;
+  }
+  .gradient {
+    background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/shadow-large.png") no-repeat 50% 100%;
+    padding-bottom: 100px;
+  }
+  img.word {
+    margin-top: 85px;
+    margin-bottom: 0;
+  }
+  img.border {
+    outline: $color-border-gray solid thin;
+  }
+  img + h2, img + p {
+    position: relative;
+    top: -9px;
+  }
+  img.ken, img.video {
+    visibility: hidden;
+  }
+  strong.bigger {
+    font-size: 26px;
+  }
+  .skycom-6 img {
+    max-width: 100%;
+  }
+  .brandcon-loader {
+    position: absolute;
+    font-size: 73px;
+    left: 50%;
+    top: 50%;
+    margin-top: -36px;
+    margin-left: -36px;
+    text-align: center;
+  }
+  .head {
+    overflow: hidden;
+    margin-bottom: 35px;
+    height: 508px;
+    &:first-child {
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 52px;
+      font-weight: 100;
+      font-family: 'SkyTextMedium';
+      margin: 75px 0 0 0;
+      color: #FFFFFF;
+      position: absolute;
+      top: 0;
+      &.bottom {
+        bottom: 90px;
+        top: auto;
+      }
+      &.dark {
+        color: #000;
+      }
+    }
+    img {
+      margin-bottom: 0;
+    }
+    video, .wrap-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: auto;
+      min-width: 1446px;
+    }
+  }
+  .intro {
+    margin-top: 0;
+  }
+  .wrap-video {
+    position: relative;
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: auto;
+    }
+  }
+  .gap {
+    &.bottom {
+      margin-bottom: 95px;
+      &.small {
+        margin-bottom: 35px;
+      }
+      &.remove {
+        margin-bottom: 0 !important;
+      }
+    }
+    &.top {
+      margin-top: 95px;
+      &.small {
+        margin-top: 35px;
+      }
+      &.medium {
+        margin-top: 50px;
+        font-family: SkyTextRegular;
+      }
+      &.remove {
+        margin-top: 0 !important;
+      }
+    }
+  }
+  #section-6 {
+    padding-top: 90px;
+    img {
+      margin-bottom: -10px;
+    }
+    .text {
+      position: absolute;
+      top: 330px;
+      width: 30%;
+    }
+  }
+  #section-7 > div:first-child {
+    height: 508px;
+  }
+  #section-8 {
+    .me-plugin, .wrap-video, video, embed {
+      width: 356px !important;
+      height: 200px !important;
+    }
+  }
+  #section-18 {
+    padding-top: 60px;
+    padding-bottom: 90px;
+    .text {
+      margin-bottom: 90px;
+    }
+  }
+  #section-9 .minion-container {
+    position: relative;
+    width: 520px;
+    height: 405px;
+    canvas {
+      position: absolute;
+    }
+  }
+  #section-10 {
+    height: 788px;
+  }
+  #section-2 {
+    padding-bottom: 0;
+    .skycom-6 {
+      min-height: 630px;
+      & + div {
+        position: relative;
+        img {
+          position: absolute;
+          bottom: 0;
+          margin: 0;
+        }
+      }
+    }
+    .text {
+      p {
+        font-style: italic;
+        &.intro {
+          font-style: normal;
+          font-family: 'SkyTextMedium';
+        }
+      }
+    }
+    .intro.small p {
+      margin: 0;
+    }
+  }
+  .skybs-ob-coverflow-panel {
+    h2,h3 {
+      margin-bottom: 0;
+      line-height: 22px;
+    }
+  }
+  #sidenav a {
+    font-size: 16px;
+  }
+  #skybs-ob-coverflow-spinner.brandcon-loader {
+    position: absolute;
+    font-size: 73px;
+    left: 50%;
+    top: 0;
+    text-align: center;
+  }
+  /* --------------------------------------------------------------------------------------------------------------
+  -- COVERFLOW
+  -------------------------------------------------------------------------------------------------------------- */
+  #skybs-ob-coverflow {
+    position: relative;
+  }
+  .skybs-ob-coverflow-panels {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    /* give a relative height of 500px for a width of 1446px 
+    padding-bottom:34.578147%;*/
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+    cursor: grab;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    overflow: hidden;
+  }
+  .skybs-ob-coverflow-panels-grad-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 10%;
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 1)), color-stop(100%, rgba(255, 255, 255, 0)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    /* IE10+ */
+    background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 );
+    /* IE6-9 */
+  }
+  .skybs-ob-coverflow-panels-grad-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 10%;
+    background: -moz-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255, 255, 255, 0)), color-stop(100%, rgba(255, 255, 255, 1)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    /* IE10+ */
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 );
+    /* IE6-9 */
+  }
+  .skybs-ob-coverflow-panels .wrapper-3d {
+    -webkit-transform-style: preserve-3d;
+    -webkit-perspective: 1000px;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .skybs-ob-coverflow-panel {
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    width: 344px;
+    height: 410px;
+    margin-left: -177px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+  }
+  .skybs-ob-coverflow-panel .wrapper-3d {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .skybs-ob-coverflow-panel.reflect {
+    -webkit-box-reflect: below 2px -webkit-gradient(linear, 0% 0%, 0% 100%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(80%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0.15)));
+  }
+  .skybs-ob-coverflow-panel-header {
+    position: relative;
+    width: 344px;
+    height: 170px;
+  }
+  .skybs-ob-coverflow-panel-header-line {
+    position: absolute;
+    top: 0;
+    /*left:-3px;*/
+    width: 11px;
+    height: 256px;
+    background-image: url(https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/tl_panel_header_line.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+  .skybs-ob-coverflow-panel-header h1 {
+    font-size: 36px;
+    font-weight: 100;
+    font-family: 'SkyTextRegular';
+    color: #000000;
+    margin: 0;
+    padding: 0 10px 6px 14px;
+    position: relative;
+    top: -8px;
+  }
+  .skybs-ob-coverflow-panel-header h2 {
+    font-size: 18px;
+    font-weight: 100;
+    font-family: 'SkyTextMedium';
+    color: #000000;
+    margin: 0;
+    padding: 0 20px 0 34px;
+  }
+  .skybs-ob-coverflow-panel-header h3 {
+    font-size: 16px;
+    font-weight: 100;
+    font-family: 'SkyTextRegular';
+    color: #000000;
+    margin: 0;
+    padding: 0 20px 0 34px;
+  }
+  .skybs-ob-coverflow-panel-content {
+    position: relative;
+    width: 344px;
+    height: 240px;
+    /* improves edge rendering for 3d Transforms on Firefox */
+    outline: 1px solid transparent;
+  }
+  .skybs-ob-coverflow-panel-content-image {
+    position: absolute;
+    width: 336px;
+    height: 229px;
+    left: 4px;
+    top: 4px;
+  }
+  .skybs-ob-coverflow-panel-content-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/tl_panel.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+  .skybs-ob-coverflow-panel-content .btn-play-video {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    left: auto;
+    top: auto;
+    left: 14px;
+    bottom: 16px;
+    background-image: url(https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/icon_playvideo_80x80.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 100% 100%;
+  }
+  .skybs-ob-coverflow-panel-content .btn-play-video img {
+    width: 100%;
+    height: 100%;
+  }
+  #skybs-ob-coverflow-slider-wrapper {
+    position: relative;
+  }
+  .skybs-ob-coverflow-slider {
+    position: relative;
+    height: 50px;
+    margin: 0 auto;
+    width: 1050px;
+    /*border-top:1px solid #DCDCDC;
+    border-bottom:1px solid #DCDCDC;*/
+    padding: 0;
+  }
+  .skybs-ob-coverflow-slider-groove {
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 50%;
+    height: 1px;
+    margin-top: -1px;
+    background-color: #DCDCDC;
+  }
+  .skybs-ob-coverflow-slider-bar {
+    position: absolute;
+    top: 50%;
+    height: 1px;
+    margin-top: -1px;
+    background-color: #80B9E2;
+    left: 0;
+    right: 0;
+  }
+  .skybs-ob-coverflow-slider-markers {
+    position: relative;
+    overflow: hidden;
+  }
+  .skybs-ob-coverflow-slider-markers div {
+    display: inline-block;
+    float: left;
+    height: 100%;
+    width: 50px;
+    line-height: 48px;
+    text-align: center;
+    font-size: 15px;
+  }
+  .skybs-ob-coverflow-slider-marker-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background-color: #80B9E2;
+    border-radius: 4px;
+  }
+  .skybs-ob-coverflow-slider-scrub {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 50px;
+    cursor: pointer;
+  }
+  .skybs-ob-coverflow-slider-scrub-icon {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 50px;
+    width: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+    background-image: url(https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/tl_scrub.png);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+}

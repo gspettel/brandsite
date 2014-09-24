@@ -1,0 +1,167 @@
+<div id="wrap-brandhub-book" class="skycom-container">
+
+  <div id="wrap-page-title" class="single">
+
+    <h1 class="section-title">
+      <span data-ng-bind="pageTitle"></span>
+      <a id="btn-feedback" data-tracking="false" href="javascript:void(0);" data-ng-click="utilitiesService.showFeedbackForm()"><i class="icon skycon-mail" aria-hidden="true"></i>Tell us what you think</a>
+    </h1>
+
+  </div>
+
+  <div class="copy">
+    <p>
+      Brand Hub is an opportunity for us to get together to review work and offer strategic brand advice where needed.  
+    </p>
+    <p>
+      Feel free to book a brand hub slot to discuss new concepts and ideas when they are in early stages of development. We can support you in developing the work while keeping it on brand, so you can be confident of getting brand approval when the work is complete.
+    </p>
+  </div>
+
+  <form class="sky-form" novalidate name="bookForm">
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label for="#first_name" class="required">First name</label>
+      </div>
+      <div class="skycom-7">
+        <input type="text" name="first_name" required data-ng-model="first_name" class="form-control" id="first_name" placeholder="Enter your first name">
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label for="#last_name" class="required">Surname</label>
+      </div>
+      <div class="skycom-7">
+        <input type="text" name="last_name" required data-ng-model="last_name" class="form-control" id="last_name" placeholder="Enter your surname">
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label for="#campaign" class="required">Subject</label>
+      </div>
+      <div class="skycom-7">
+        <input type="text" data-ng-model="campaign" required name="campaign" class="form-control" id="campaign" placeholder="eg. Sky Go Q4">
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label for="#date-in-market">Date in market</label>
+      </div>
+      <div class="skycom-7">
+        <div data-datepicker data-ng-model="dateInMarket"></div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label for="#deadline">Deadline</label>
+      </div>
+      <div class="skycom-7">
+        <div data-datepicker data-ng-model="dateDeadline"></div>
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label for="#phone">Contact number</label>
+      </div>
+      <div class="skycom-7">
+        <input type="text" data-ng-model="phone" name="phone" class="form-control" id="phone" placeholder="eg. +447567567567">
+      </div>
+    </div>
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label for="#description">Description</label>
+      </div>
+      <div class="skycom-7">
+        <textarea type="text" data-ng-model="description" name="description" class="form-control" id="description" placeholder="Description"></textarea>
+      </div>
+    </div>
+
+    <!-- <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label for="#campaign-types">Type of campaign</label>
+      </div>
+      <div class="skycom-7 campaign-types" validate-collection-single-value data-ng-model="campaign_types">
+        <p data-ng-repeat="option in campaign_types">
+          <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox" data-ng-checked="option.selected">
+          <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+        </p>
+      </div>
+    </div> -->
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label>Files</label>
+      </div>
+      <div class="skycom-7">
+        <div class="upload">
+          <div data-file-drop-panel="files" data-file-drop-panel-multiple data-message="Drag and drop multiple files" data-on-loaded="selectFirst()">
+              <button class="btn btn-primary" data-pl-upload data-pl-auto-upload="false" data-pl-files-model="files" data-pl-progress-model="percent" data-pl-url="/api/assets/add" data-pl-flash-swf-url="{{modelService.cms.config.urls.local_templates + modelService.cms.env}}/assets/others/Moxie.swf" data-pl-silverlight-xap-url="{{modelService.cms.config.urls.local_templates + modelService.cms.env}}/assets/others/Moxie.xap">Add files</button>
+              Select the file that you wish to upload here
+          </div>
+
+          <a href="javascript:void(0);" data-ng-show="files.length" data-ng-repeat="file in files" class="row clearfix fade" title="{{file.name}}">
+            <div class="title" data-ng-bind="file.name"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 
+    <div class="row clearfix">
+      <label>The next available slot is</label>
+      <button type="button" class="btn btn-primary" data-ng-click="bookNow()" data-ng-disabled="bookForm.name.$invalid || bookForm.campaign.$invalid || bookForm.date_in_market.$invalid"><span data-ng-bind="nextSlot"></span> Book now</button>
+    </div> -->
+
+    <div class="row clearfix book-date">
+      <div class="skycom-5 align-right">
+        <label class="required">Choose date</label>
+      </div>
+      <div class="skycom-7">
+        <div data-datepicker date-required data-ng-model="date" class="inline"></div>
+      </div>
+    </div>
+
+
+    <div class="row clearfix">
+      <div class="skycom-5 align-right">
+        <label class="required">Choose a time</label>
+      </div>
+      <div class="skycom-7 wrap-slot-selector" data-ng-model="times" data-slot-selector>
+        <p data-ng-if="availableSlots.slots['00']">
+          <input type="checkbox" class="css-checkbox ng-class:{'checked': times.time_00}" data-ng-model="times.time_00" data-ng-change="selectTime(1)"  id="h00" />
+          <label class="css-label" data-ng-if="availableSlots.slots.00" for="h00"><span>02:00pm - 02:15pm</span></label>
+        </p>
+        <p data-ng-if="availableSlots.slots.15">
+          <input type="checkbox" class="css-checkbox  ng-class:{'checked': times.time_15}"  id="h15" data-ng-model="times.time_15" data-ng-change="selectTime(2)" />
+          <label class="css-label" data-ng-if="availableSlots.slots.15" for="h15"><span>02:15pm - 02:30pm</span></label>
+        </p>
+        <p data-ng-if="availableSlots.slots.30" >
+          <input type="checkbox" class="css-checkbox  ng-class:{'checked': times.time_30}"  id="h30" data-ng-model="times.time_30" data-ng-change="selectTime(3)" />
+          <label class="css-label" data-ng-if="availableSlots.slots.30" for="h30"><span>02:30pm - 02:45pm</span></label>
+        </p>
+        <p data-ng-if="availableSlots.slots.45" >
+          <input type="checkbox" class="css-checkbox  ng-class:{'checked': times.time_45}"  id="h45" data-ng-model="times.time_45"  data-ng-change="selectTime(4)" />
+          <label class="css-label" data-ng-if="availableSlots.slots.45" for="h45"><span>02:45pm - 03:00pm</span></label>
+        </p>
+        <span data-ng-show="!availableSlots.slots">All slots for the selected day are booked!<br/>Please select another day</span>
+      </div>
+    </div>
+
+    <div class="row clearfix submit">
+      <div class="skycom-7 skycom-offset5">
+        <button type="submit" class="btn btn-primary" data-ng-click="book()" data-ng-disabled="bookForm.$invalid">Book now</button>{{percent}}
+        <p class="error ng-hide" data-ng-show="bookForm.$invalid">Please fill in all the required fields!</p>
+      </div>
+   </div>
+ </form>
+
+  <div data-goto-top data-track-element="#wrap-brandhub-book"></div>
+
+</div>

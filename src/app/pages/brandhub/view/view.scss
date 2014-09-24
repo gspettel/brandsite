@@ -1,0 +1,81 @@
+#wrap-brandhub-view {
+  font-size: 19px;
+  header {
+    background: #eaeaea;
+    font-weight: bold;
+  }
+  .skycom-10.available {
+    padding-left: 3.15789%;
+    margin-left: 0;
+    border-top: 1px solid #eaeaea;
+  }
+  .wrap-day {
+    margin-bottom: 60px;
+    border: 1px solid #eaeaea;
+    white-space: nowrap;
+    background: $background-light;
+    p {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      line-height: 24px;
+    }
+    .no-ellipsis {
+      text-overflow: initial;
+      overflow: visible;
+    }
+  }
+  .row:hover {
+    .cushioned {
+      cursor: pointer;
+      text-decoration: underline;
+    }
+  }
+  .brandcon-delete {
+    font-size: 23px;
+    color: #454545;
+    &:hover {
+      color: $link;
+    }
+  }
+  .booked {
+    background: $white;
+    border-top: 1px solid #eaeaea;
+  }
+  .head-date {
+    margin-left: 15px;
+  }
+  .day {
+    height: 229px;
+    p, strong {
+      line-height: 1;
+      margin-left: 15px;
+    }
+    p {
+      font-size: 50px;
+    }
+    strong {
+      font-size: 100px;
+    }
+  }
+  .under-10 {
+    margin-left: 8px;
+  }
+  .section-title.smaller {
+    &, & + p {
+      margin-top: 40px;
+    }
+    & + p {
+      padding-top: 10px;
+    }
+    a {
+      font-size: 30px;
+      margin: 0 30px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}

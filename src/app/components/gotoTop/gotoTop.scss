@@ -1,0 +1,17 @@
+#gotoTop {
+  position: fixed;
+  bottom: 20%;
+  right: 0;
+  background-color: #0073C5;
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.3);
+  border-top-left-radius: 6px;
+  border-bottom-left-radius: 6px;
+  padding: 10px;
+  &,a,i {
+    color: #fff;
+  }
+  i {
+    padding-right: 10px;
+    margin-bottom: -4px;
+  }
+}

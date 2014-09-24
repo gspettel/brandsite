@@ -1,0 +1,371 @@
+<div id="wrap-page-asset-edit" data-ng-hide="!asset">
+
+  <div id="wrap-page-title" class="skycom-container single">
+    <div class="clearfix">
+        <h1 class="section-title">Edit</h1>
+    </div>
+  </div>
+
+  <div class="skycom-container">
+
+    <div class="clearfix">
+
+      <div class="skycom-6 skycom-offset3 content">
+        <div>
+        
+          <a class="btn-back skycon-close" data-ng-href="/assets/all"></a>
+          
+          <form class="sky-form" name="assetForm" data-ng-show="asset" novalidate>
+            <fieldset>
+
+              <div class="clearfix header">
+                <div class="skycom-6" ><p class="intro smaller">Asset ID: <strong data-ng-bind="asset.id"></strong></p></div>
+                <div class="skycom-6"><p class="intro smaller ellipsis">Posted by: <span data-ng-bind="asset.data.owner.data.first_name + ' ' + asset.data.owner.data.last_name"></span></p></div>
+              </div>
+
+              <div class="clearfix title"> 
+                <div><p class="intro">Title</p></div>    
+                <div class=" wrap-title-validation">
+                    <input type="text" name="title" data-ng-model="asset.data.title" title="{{asset.data.title}}" validate-asset-title validate-asset-title-exclude="{{asset.id}}" data-validate-progress="checkingTitle"/><i class="status" data-ng-class="{'checking': checkingTitle}"></i>
+                    <p class="error ng-hide" data-ng-show="assetForm.title.$invalid"><span>The title already exists or is invalid!</span></p>
+                </div>
+              </div>
+
+            <div class="clearfix">        
+              <div>
+                <p class="intro">Add asset thumbnail (optional)</p>
+                <p>Provide a thumbnail for your asset. This will help people find the exact asset that they are looking for.</p>
+              </div>      
+              <div  data-ng-class="{'preview': thumbs.length}" data-file-drop-panel="thumbs" data-file-drop-panel-preview>
+                <button class="btn btn-primary" data-pl-upload data-pl-auto-upload="false" data-pl-files-model="thumbs" data-pl-filters-model="allowedThumbFiles" data-pl-url="/api/assets/add" data-on-file-added="addThumb()" data-pl-flash-swf-url="{{modelService.cms.config.urls.local_templates + modelService.cms.env}}/assets/others/Moxie.swf" data-pl-silverlight-xap-url="{{modelService.cms.config.urls.local_templates + modelService.cms.env}}/assets/others/Moxie.xap">Add new thumbnail</button>
+                <button class="btn btn-primary ng-hide btn-thumb-default" data-ng-show="customThumbSelected" data-ng-click="restoreDefaultThumb()">Default thumbnail</button>
+
+                <p data-ng-show="thumbs[0].thumb.length && (modelService.cms.isIE8 || modelService.cms.isIE9)" class="ng-hide wrap-name-list" data-ng-bind="thumbs[0].thumb" ></p>
+
+                <div class="preview-image" data-ng-show="thumbs[0].thumb.length" data-ng-class="{'dark':filters.available.asset_dark_background}"><img data-ng-show="thumbs[0].thumb.length && !modelService.cms.isIE8 && !modelService.cms.isIE9" data-ng-src="{{thumbs[0].thumb}}"/></div>
+                
+              </div>
+            </div>
+
+            <div class="clearfix spacing">    
+              <div>
+                <ul class="h one-column">
+                  <li>
+                    <input id="option-dark-background" type="checkbox" class="css-checkbox ng-class:{'checked': filters.available.asset_dark_background}" data-ng-checked="filters.available.asset_dark_background" data-ng-model="filters.available.asset_dark_background">
+                    <label for="option-dark-background" class="css-label"><span>Add a gray background to the thumbnail</span></label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="clearfix description">
+              <div>
+                <p class="intro">Add description (max 200 characters)</p>
+                <p>Provide a short description of the asset to explain its purpose. This will be displayed on the asset detail page.</p>
+              </div>
+              <div>
+                <textarea data-ng-model="asset.data.summary"></textarea>
+              </div>
+            </div>
+            
+            <!-- <div class="clearfix">
+              <div><p class="intro">New asset or replacement asset?</p></div>
+              <div>
+                <ul class="h two-columns">
+                  <li>
+                    <input id="option-is-new" type="checkbox" class="css-checkbox ng-class:{'checked': filters.available.is_new}" data-ng-model="filters.available.is_new" data-ng-change="filters.available.is_replacement = false; filters.available.asset_to_replace = null">
+                    <label for="option-is-new" class="css-label"><span>New</span></label>
+                  </li>
+                  <li>
+                    <input id="option-is-replacement" type="checkbox" data-ng-model="filters.available.is_replacement" class="css-checkbox ng-class:{'checked': filters.available.is_replacement}" data-ng-checked="filters.available.is_replacement" data-ng-change="filters.available.is_new = false">
+                    <label for="option-is-replacement" class="css-label"><span>Replacement</span></label>
+                  </li>
+                </ul>
+              </div>
+            </div> -->
+
+            <div class="asset-to-replace clearfix" data-ng-class="{'has-results': assetsToReplace.records.length}" data-ng-if="filters.available.is_replacement" validate-replacement-required data-ng-model="filters.available.asset_to_replace">
+
+              <div class="icon">
+                <input type="text" name="title_to_replace" data-ng-model="filters.available.title_to_replace" />
+                <a href="javascript:void(0);" data-ng-show="filters.available.title_to_replace.length" data-ng-click="clearReplacement()"><i class="skycon-close" aria-hidden="true"></i></a>
+              </div>
+
+              <div class="ng-hide not-found" data-ng-show="filters.available.title_to_replace.length && !assetsToReplace.records.length">
+                No assets have been found. Please refine your search.
+              </div>
+
+              <div class="notice clearfix" data-ng-show="assetsToReplace.records.length">
+                <p class="border"></p>
+
+                <p class="results">
+                  <span data-ng-bind="assetsToReplace.records.length"></span> of <span data-ng-bind="assetsToReplace.total"></span> results
+                  <span class="error" data-ng-show="assetsToReplace.items_per_page < assetsToReplace.total && assetsToReplace.records.length < assetsToReplace.total"> Please refine your search <span data-ng-show="assetsToReplace.total > assetsToReplace.records.length"> or <a href="javascript:void(0);" data-ng-click="loadMoreReplacements()">show more results</a></span></span>
+                </p>
+
+                <div class="skycom-4 asset" data-ng-click="filters.available.asset_to_replace = asset.id" data-ng-repeat="asset in assetsToReplace.records" data-ng-class="{'selected': asset.selectedAsReplacement, 'alpha': !($index % 3)}">
+                  <div data-ng-if="asset.data.thumb.length" data-rn-lazy-background="{{asset.data.thumb}}" rn-lazy-loading-class="is-loading"></div>
+                  <span data-ng-bind="asset.data.title"></span>
+                  <input id="replacement-{{asset.id}}" type="checkbox" class="css-checkbox ng-class:{'checked': filters.available.asset_to_replace == asset.id}" data-ng-checked="filters.available.asset_to_replace == asset.id">
+                  <label class="css-label"><span data-ng-bind="asset.title"></span></label>
+                </div>
+              
+                <a class="skycom-12" data-ng-show="assetsToReplace.total > assetsToReplace.records.length" href="javascript:void(0);" data-ng-click="loadMoreReplacements()">Show more results</a>
+
+                <div class="loading" data-ng-show="loadingReplacements"><div class="spinner-blue"></div></div>
+
+              </div>
+
+            </div>
+
+              <div class="clearfix" validate-collection-single-value data-ng-model="filters.available.main_categories">
+                <div><p class="intro">Main section:</p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.main_categories">
+                      <input id="option-{{option.id}}" type="checkbox" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-model="option.selected" data-ng-checked="option.selected" data-ng-change="filters.asset_main_category = option; clearSiblings(filters.available.main_categories, option);">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'master_brand'" validate-collection-required data-ng-model="filters.available.master_brands_categories">
+                <div><p class="intro">Choose category: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.master_brands_categories">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'channels'" validate-collection-required data-ng-model="filters.available.channels_categories">
+                <div><p class="intro"> Choose category: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.channels_categories">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'channels'" validate-collection-required data-ng-model="filters.available.channels_brands">
+                <div> <p class="intro">Choose brand: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.channels_brands">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'products'" data-ng-model="filters.available.products_products">
+                <div> <p class="intro">Choose product: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.products_products">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'products'" validate-collection-required data-ng-model="filters.available.products_categories">
+                <div> <p class="intro">Choose category: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.products_categories">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'campaigns'" data-ng-model="filters.available.campaigns_product_areas">
+                <div><p class="intro">Choose product area: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.campaigns_product_areas">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'campaigns'" validate-collection-required data-ng-model="filters.available.campaigns_medias">
+                <div> <p class="intro">Choose media: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.campaigns_medias">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'campaigns'" validate-collection-single-value data-ng-model="filters.available.years">
+                <div> <p class="intro">Choose year: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.years">
+                      <input id="option-{{option.value}}" type="checkbox" data-ng-model="option.selected" data-ng-change="clearSiblings(filters.available.years, option)"  class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.value}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'campaigns'" validate-collection-single-value data-ng-model="filters.available.quarters">
+                <div> <p class="intro">Choose quarter: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.quarters">
+                      <input id="option-{{option.value}}" type="checkbox" data-ng-model="option.selected" data-ng-change="clearSiblings(filters.available.quarters, option)" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.value}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'initiatives'" data-ng-model="filters.available.initiatives_categories">
+                <div> <p class="intro">Choose category: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.initiatives_categories">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'initiatives'" validate-collection-required data-ng-model="filters.available.initiatives_initiatives">
+                <div> <p class="intro">Choose category: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.initiatives_initiatives">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'content'" validate-collection-required data-ng-model="filters.available.content_contents">
+                <div> <p class="intro">Choose content: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.content_contents">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected" data-ng-change="clearSiblings(filters.available.content_contents, option)">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'content'" validate-collection-required data-ng-model="filters.available.content_documents">
+                <div> <p class="intro">Choose content: </p></div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.content_documents" data-ng-hide="option.value === 'asset-request-form' && !filters.available.content_contents[0].selected">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected" data-ng-change="clearSiblings(filters.available.content_documents, option)">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix" data-ng-if="filters.asset_main_category.value === 'campaigns'" validate-collection-required data-ng-model="filters.available.countries">
+                <div> <p class="intro">Choose country:</p> </div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.countries">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected" data-ng-change="clearSiblings(filters.available.countries, option)">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>       
+
+              <div class="clearfix" validate-collection-single-value data-ng-model="filters.available.filetypes">
+                <div> <p class="intro">Choose file type:</p> </div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.filetypes">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected" data-ng-change="clearSiblings(filters.available.filetypes, option)">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>       
+
+              <div class="clearfix" data-ng-model="filters.available.guidelines">
+                <div> <p class="intro">Choose a set of guidelines:</p> </div>
+                <div>
+                  <ul class="h two-columns">
+                    <li data-ng-repeat="option in filters.available.guidelines">
+                      <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected" data-ng-change="clearSiblings(filters.available.guidelines, option)">
+                      <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- <div class="clearfix">
+                <div> <p class="intro">Link to guidelines:</p></div>
+                <div>
+                  <select ng-options="g.title for g in filters.available.guidelines" ng-model="filters.selected.asset_guideline">
+                    <option value="">Select guideline</option>
+                  </select>
+                </div>
+              </div> -->
+
+              <div class="clearfix spacing">
+                <div>
+                  <ul class="h one-column">
+                    <li>
+                      <input id="option-is-private" type="checkbox" class="css-checkbox ng-class:{'checked': filters.available.is_private}" data-ng-model="filters.available.is_private" data-ng-checked="filters.available.is_private">
+                      <label for="option-is-private" class="css-label"><span>Private (For internal use only)</span></label>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="clearfix buttons">
+                <div>
+                  <ul class="h two-columns">
+                    <li>
+                      <button class="form-submit btn primary-cta" data-ng-click="save()"  data-ng-disabled="assetForm.$invalid">Save</button>
+                      <p>Save your updates</p>
+                    </li>
+                    <li>
+                      <button class="form-submit btn primary-cta" data-ng-click="reset()">Reset</button>
+                      <p>Undo all changes in this session</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </fieldset>
+          </form>
+
+      </div>
+
+    </div>
+
+    </div>
+
+  </div>
+
+</div>

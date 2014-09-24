@@ -1,0 +1,264 @@
+#wrap-page-approval {
+  margin-bottom: 60px;
+  .left-side, .right-side {
+    padding-left: 0;
+    & > div {
+      margin-right: 15px;
+      padding-left: 0;
+      border: 1px solid #dcdcdc;
+    }
+  }
+  .badge.blue {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 30px;
+    font-size: 19px;
+  }
+  .pod-title.first {
+    margin-top: 50px;
+  }
+  .left-side {
+    a {
+      margin: 0;
+      border: 1px solid #dcdcdc;
+      border-top: none;
+      display: block;
+      background: $white;
+      &:first-child {
+        border-top: 1px solid #dcdcdc;
+      }
+    }
+    .brandcon-tick {
+      font-size: 30px;
+      position: absolute;
+      right: 12px;
+      top: 14px;
+    }
+    .colour.skycon-close {
+      color: $error;
+      font-size: 30px;
+      position: absolute;
+      right: 12px;
+      top: 14px;
+      line-height: 30px;
+      padding-right: 1px;
+    }
+    .done {
+      line-height: 58px;
+    }
+    .cushioned {
+      padding: 11.2%;
+    }
+    .green.rejected {
+      color: #d21717;
+    }
+    .progress {
+      position: absolute;
+      background: $color-green-light;
+      height: 100%;
+      width: 0;
+      display: inline-block;
+      left: 0;
+      top: 0;
+      border-radius: 0;
+      margin: 0;
+      padding: 0;
+      z-index: 0;
+      &.rejected {
+        background: #FFFAFA;
+      }
+    }
+    a:hover {
+      text-decoration: underline;
+      div {
+        text-decoration: underline;
+      }
+    }
+    a.selected {
+      background: #eaeaea;
+      .arrow {
+        display: block;
+      }
+    }
+    a {
+      position: relative;
+      font-size: 18px;
+      line-height: 21px;
+      color: #000;
+      & > div {
+        z-index: 1;
+        position: relative;
+      }
+    }
+    .title p {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .arrow {
+      display: none;
+      content: " ";
+      position: absolute;
+      width: 30px;
+      height: 100%;
+      top: 0;
+      right: -29px;
+      background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/arrow.png") no-repeat;
+      background-size: cover;
+      &.done {
+        background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/arrow-green.png") no-repeat 100% 100%;
+      }
+    }
+    .center {
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .right {
+      text-align: right;
+    }
+    .wrap-context-menu {
+      a, a:first-child {
+        border: none;
+      }
+    }
+  }
+  .right-side {
+    padding-right: 0;
+    & > div {
+      margin-left: 0;
+      margin-right: 0;
+      padding: 30px;
+      background: #eaeaea;
+    }
+    .error {
+      margin-top: 15px;
+    }
+    textarea {
+      width: 100%;
+    }
+    .icon.brandcon-download {
+      font-size: 20px;
+      margin-right: 10px;
+    }
+    .title {
+      position: relative;
+      input {
+        display: block;
+        width: 100%;
+        line-height: 25px;
+        margin: 0;
+        font: 25px SkyTextRegular, Helvetica, Arial, sans-serif;
+        color: #333333;
+        padding-right: 63px;
+      }
+      .edit {
+        right: -14px;
+      }
+    }
+    .wrap-lazy-img {
+      background: #fff;
+      &.dark {
+        background: $color-border-gray;
+      }
+    }
+    .asset-to-replace {
+      .asset-container {
+        margin-bottom: 10px;
+        max-width: 488px;
+      }
+      a.archive {
+        float: right;
+        i {
+          margin-right: 5px;
+          font-size: 22px;
+          line-height: 22px;
+        }
+      }
+    }
+    .wrap-file-drop-panel {
+      border: 0;
+      & > div:first-child {
+        //border: 1px solid $color-border-gray;
+     
+      }
+      .header {
+        .btn {
+          margin: 15px 15px 15px 0;
+        }
+        .btn-thumb-default {
+          margin-right: 0;
+        }
+      }
+    }
+    .edit {
+      position: absolute;
+      right: 0;
+      top: 0;
+      color: $link;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    .row {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+    .intro {
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .spacing {
+      margin-top: 30px;
+    }
+    .header {
+      margin-bottom: 0;
+      .intro {
+        margin-top: 0;
+      }
+    }
+    label {
+      font-weight: normal;
+    }
+    ul.h {
+      display: block;
+    }
+    li {
+      width: 25%;
+      margin: 0 0 5px;
+    }
+    .buttons {
+      margin-top: 35px;
+      p {
+        margin-top: 15px;
+        margin-right: 15px;
+      }
+    }
+    .two-columns {
+      li {
+        width: 50%;
+      }
+    }
+    .one-column {
+      li {
+        width: 100%;
+      }
+    }
+    .three-columns {
+      li {
+        width: 33.3%;
+      }
+    }
+    .failed {
+      margin-bottom: 30px;
+      color: $error;
+      .brandcon-error {
+        font-size: 80px;
+        margin-bottom: 30px;
+        text-align: center;
+      }
+    }
+  }
+}

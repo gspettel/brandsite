@@ -1,0 +1,205 @@
+$submenuHeight: 40px;
+
+body header.main {
+  background: $white;
+  color: #333;
+  position: relative;
+  position: absolute;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid $color-border-gray;
+  @media (min-width: 1190px) {
+    position: fixed;
+    width: 100%;
+  }
+  nav {
+    h2, a {
+      display: inline-block;
+      vertical-align: top;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      text-decoration: none;
+    }
+    .selected a {
+      font-family: SkyTextMedium, Helvetica, Arial, sans-serif;
+      text-decoration: none;
+      position: relative;
+      &:after {
+        position: absolute;
+        content: ' ';
+        left: 0;
+        bottom: 22px;
+        height: 2px;
+        border-bottom: 2px solid $primary-button;
+        display: block;
+        width: 100%;
+      }
+    }
+    a {
+      &:hover {
+        color: $primary-button;
+        text-decoration: none;
+        position: relative;
+        &:after {
+          position: absolute;
+          content: ' ';
+          left: 0;
+          bottom: 22px;
+          height: 2px;
+          border-bottom: 2px solid $primary-button;
+          display: block;
+          width: 100%;
+        }
+        h2 {
+          color: $primary-button;
+        }
+      }
+      &.btn {
+        color: $white;
+      }
+    }
+    h2 {
+      font-size: 30px;
+      line-height: 71px;
+    }
+    ul {
+      margin: 0;
+    }
+    & > ul {
+      display: block !important;
+      & > li {
+        line-height: 76px;
+        & > ul,& > ul.h {
+          background: #3f3f3f;
+          position: absolute;
+          display: none;
+          width: 100%;
+          z-index: 10;
+          overflow: hidden;
+          line-height: $submenuHeight - 5;
+          text-align: center;
+          -webkit-transition: .1s linear all;
+          transition: .1s linear all;
+          a {
+            line-height: 1;
+          }
+          &.h > li {
+            display: inline-block;
+            float: none;
+          }
+          li {
+            line-height: 1;
+          }
+        }
+        &.submenu.loading {
+          & > ul {
+            height: $submenuHeight;
+            z-index: 0;
+            -webkit-transition: .1s linear all;
+            transition: .1s linear all;
+          }
+        }
+        &.right {
+          float: right;
+        }
+      }
+    }
+    .brand {
+      padding-right: 45px;
+      a h2, a:hover h2, a:hover:after {
+        text-decoration: none;
+        color: #333;
+        border-bottom: none;
+      }
+      h2:after {
+        display: inline-block;
+        content: 'BETA';
+        position: absolute;
+        top: -9px;
+        text-align: right;
+        font-size: 14px;
+        padding-left: 2px;
+      }
+    }
+    .basket {
+      position: relative;
+      &:hover ul {
+        display: inline-block;
+      }
+      a:hover:after {
+        text-decoration: none;
+        border: none;
+      }
+      img {
+        margin-top: -5px;
+      }
+      & > ul {
+        width: auto;
+      }
+      i {
+        margin-top: -5px;
+        width: 36px;
+        height: 36px;
+        display: inline-block;
+        background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/basket.png") no-repeat;
+      }
+    }
+  }
+  ul.h {
+    .brand-hub {
+      margin: 0 25px;
+      //padding-right: 0;
+      a {
+        vertical-align: middle;
+        padding: 0 15px;
+        margin-bottom: 2px;
+      }
+    }
+  }
+  .wrap-notifications {
+    position: fixed;
+    top: 45%;
+    width: 100%;
+    padding: 0 !important;
+    display: none;
+    li {
+      color: $white;
+      padding: 0;
+      line-height: 1;
+      font-size: 1.9rem;
+    }
+  }
+  i.skycon-search {
+    font-size: 3rem;
+    color: $white;
+    margin-bottom: -4px;
+  }
+  .badge {
+    top: -10px;
+    left: 2px;
+  }
+  .name {
+    display: inline-block;
+    text-transform: capitalize;
+    width: 70px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: right;
+    height: 43px;
+  }
+  .wrap-loading {
+    & > a {
+      position: absolute;
+    }
+    & > ul {
+      margin-top: 70px;
+    }
+  }
+  .menu {
+    a {
+      font-size: 20px;
+    }
+  }
+}

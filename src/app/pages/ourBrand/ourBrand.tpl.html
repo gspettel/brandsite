@@ -1,0 +1,269 @@
+<div id="wrap-our-brand" data-our-brand>
+
+  <div id="wrap-page-title" class="skycom-container">
+
+    <h1 class="section-title">Our Brand <a id="btn-feedback" data-tracking="false" href="javascript:void(0);" data-ng-click="utilitiesService.showFeedbackForm()"><i class="icon skycon-mail" aria-hidden="true"></i>Tell us what you think</a></h1>
+
+    <div id="base-styles-tab-contents" class="tabpanel selected">
+        <section class="tabcontents tabs-container page-nav">
+            <ul class="nav tabs clearfix">
+                <li class="tab selected">
+                  <a href="/our-brand" class="skycom-ellipsis internal-link">Our Story</a>
+                </li>
+                <li class="tab">
+                  <a href="/our-brand/guidelines" class="skycom-ellipsis internal-link">Guidelines</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+  </div>
+
+  <div class="skycom-container grid-1446">
+    <a href="#" id="believe-in-better" class="nav-anchor"> </a>
+    <section id="section-1" class="head">
+        <div data-fx="{'type' : 'ken', 'id' : 'section_1_fx', 'trigger' : 'always' , 'pan' : 'cc', 'zoom' : '1.1', 'secs' : '7'}"> 
+          <div class="brandcon-loader"></div>
+          <img data-ng-src="{{data.our_brand_head1_image.url}}" class="ken"/>        
+          <div class="skycom-container">
+            <h2>Believe in better</h2>
+          </div>
+        </div>
+    </section>
+
+    <section id="section-2" class="gradient clearfix">
+      <div class="skycom-container">
+        <div class="skycom-6 text">
+          <div data-ng-bind-html="data.our_brand_head1_section1_copy | toTrusted"></div>
+
+          <div class="intro gap top small" data-ng-bind-html="data.our_brand_head1_section1_author | toTrusted"></div>          
+        </div>
+        <div class="skycom-6"> <img data-ng-src="{{data.our_brand_head1_section1_image.url}}"/> </div>
+      </div>
+    </section>
+
+    <a href="#" id="25-years-of-better" class="nav-anchor"> </a>
+    <section id="section-3" class="clearfix gap top">
+      <div class="skycom-container">
+        <div class="skycom-6">
+          <img class="no-gap" data-ng-src="{{data.our_brand_head1_section2_image.url}}"/>  
+          <img class="no-gap" data-ng-src="{{data.our_brand_head1_section2_image_shadow.url}}"/>
+        </div>
+        <div class="skycom-6" data-ng-bind-html="data.our_brand_head1_section2_copy | toTrusted">
+        </div>
+      </div>
+    </section>
+
+    <section id="section-4" class="gradient clearfix gap top">
+      <div>
+          <div data-fx="{{getCoverflowData()}}"></div>
+      </div>
+    </section>
+
+    <a href="#" id="our-purpose" class="nav-anchor"> </a>
+    <section id="section-5" class="clearfix head gap bottom remove">
+        <div data-fx="{'type' : 'ken', 'id' : 'section_5_fx', 'trigger' : 'always', 'pan' : 'cb', 'zoom' : '1.1', 'secs' : '7'}">
+          <div class="brandcon-loader"></div>
+          <img data-ng-src="{{data.our_brand_head2_image.url}}" class="ken"/>
+        </div>
+      <div class="skycom-container">
+        <h2>Our purpose</h2>
+      </div>
+    </section>
+
+    <section id="section-6" class="clearfix gradient">
+      <img data-ng-src="{{data.our_brand_head2_section1_image.url}}"/>   
+      <div class="skycom-container">
+        <div class="text" data-ng-bind-html="data.our_brand_head2_section1_copy | toTrusted"></div>
+      </div>
+    </section>
+
+    <a href="#" id="our-personality" class="nav-anchor"> </a>
+    <section id="section-7" class="head">
+        <div data-fx="{'type' : 'video', 'id' : 'header_our_personality', 'url': '{{data.our_brand_head3_video}}',  'trigger' : 'always', 'loop' : 'false'}">
+          <div class="brandcon-loader"></div>
+          <img data-ng-src="{{data.our_brand_head3_image.url}}" class="video" />
+        </div>
+        <div class="skycom-container clearfix">
+          <h2>Our personality</h2>
+        </div>
+    </section>
+
+    <section id="section-8">
+      <div class="skycom-container clearfix">
+        <div class="skycom-12 gap bottom small" data-ng-bind-html="data.our_brand_head3_section1_copy | toTrusted"></div>
+      </div>
+      <div class="skycom-container clearfix">
+        <div class="skycom-4">
+          <img class="title" data-ng-src="{{modelService.cms.config.urls.images + '/word-spine-tingling.png'}}"/>
+          <div class="wrap-video" data-fx="{'type' : 'video', 'id' : 'section-8-spine-tingling', 'url': '{{data.our_brand_head3_section1_column1_video}}', 'trigger' : 'always', 'loop' : 'false'}">
+            <img data-ng-src="{{data.our_brand_head3_section1_column1_image.url}}"  class="video"/>
+          </div>
+          <div class="gap top small" data-ng-bind-html="data.our_brand_head3_section1_column1_copy | toTrusted"></div>
+        </div>
+        <div class="skycom-4">
+          <img class="title" data-ng-src="{{modelService.cms.config.urls.images + '/word-game-changing.png'}}"/>
+          <div class="wrap-video" data-fx="{'type' : 'video', 'id' : 'section-8-game-changing', 'url': '{{data.our_brand_head3_section1_column2_video}}', 'trigger' : 'always', 'loop' : 'false'}">
+            <img data-ng-src="{{data.our_brand_head3_section1_column2_image.url}}"  class="video"/>
+          </div>
+          <div class="gap top small" data-ng-bind-html="data.our_brand_head3_section1_column2_copy | toTrusted"></div>
+        </div>
+        <div class="skycom-4">
+          <img class="title" data-ng-src="{{modelService.cms.config.urls.images + '/word-brilliantly-simple.png'}}"/>
+          <div class="wrap-video" data-fx="{'type' : 'video', 'id' : 'section-8-brilliantly-simple', 'url': '{{data.our_brand_head3_section1_column3_video}}', 'trigger' : 'always', 'loop' : 'false'}">
+            <img data-ng-src="{{data.our_brand_head3_section1_column3_image.url}}"  class="video"/>
+          </div>
+          <div class="gap top small" data-ng-bind-html="data.our_brand_head3_section1_column3_copy | toTrusted"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-9" class="gap top">
+      <div class="skycom-container clearfix">
+        <div class="skycom-6 gap top small">
+          <div data-ng-bind-html="data.our_brand_head3_section2_copy | toTrusted"></div>           
+        </div>
+        <div class="skycom-6">
+          <div class="minion-container">
+            <div data-fx="{'type' : 'minion-eyes', 'id' : 'minion_eyes'}">
+              <img class="no-gap" data-ng-src="{{modelService.cms.config.urls.images + '/section9-right.jpg'}}"/>    
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-10" class="gap top small gradient">
+      <div class="skycom-container clearfix">
+        <div iframe="data.our_brand_head3_section3_video_id"></div>
+      </div>
+    </section>
+
+    <a href="#" id="our-proposition" class="nav-anchor"> </a>
+    <section id="section-11" class="head">      
+      <div data-fx="{'type' : 'ken', 'id' : 'section_11_fx', 'trigger' : 'always', 'pan' : 'cc', 'zoom' : '1.1', 'secs' : '7'}"> 
+        <div class="brandcon-loader"></div>
+        <img data-ng-src="{{data.our_brand_head4_image.url}}"  class="ken"/>
+        <div class="skycom-container clearfix">
+          <h2 class="dark">Our proposition</h2>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-12">      
+      <div class="skycom-container clearfix">
+        <p>We deliver four things brilliantly. <strong>The four Cs – Choice, Control, Communications</strong> and <strong>Care</strong>.<br/>
+        They're what we bring to our customers every day. </p>
+      </div>
+    </section>
+
+    <section id="section-13" class="gap top">      
+      <div class="skycom-container clearfix">
+        <div class="skycom-6">
+          <img class="title" data-ng-src="{{modelService.cms.config.urls.images + '/word-choice.png'}}"/>   
+          <div class="wrap-video" data-fx="{'type' : 'video', 'id' : 'section-13-video', 'url': '{{data.our_brand_head4_section1_video}}', 'trigger' : 'always', 'loop' : 'false'}">
+            <div class="brandcon-loader"></div> 
+            <img data-ng-src="{{data.our_brand_head4_section1_image.url}}"  class="video"/>  
+          </div>
+        </div>
+        <div class="skycom-6 gap top">   
+          <div>
+            <p class="gap bottom small"><strong class="bigger">The widest choice of quality entertainment. </strong></p>
+            <div data-ng-bind-html="data.our_brand_head4_section1_copy | toTrusted"></div>
+          </div>          
+        </div>
+      </div>
+    </section>
+
+    <section id="section-14">      
+      <div class="skycom-container clearfix">
+        <div class="skycom-6">
+          <div>
+            <img class="title no-gap" data-ng-src="{{modelService.cms.config.urls.images + '/word-control.png'}}"/>   
+            <p class="gap bottom small"><strong class="bigger">When. Where. How. </strong></p>
+            <div data-ng-bind-html="data.our_brand_head4_section2_copy | toTrusted"></div>
+          </div>       
+        </div>
+        <div class="skycom-6 right">   
+          <div class="wrap-video" data-fx="{'type' : 'video', 'id' : 'section-14-video', 'url': '{{data.our_brand_head4_section2_video}}', 'trigger' : 'always', 'loop' : 'false'}" >
+            <div class="brandcon-loader"></div>      
+            <img  data-ng-src="{{data.our_brand_head4_section2_image.url}}"   class="video"/>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="section-15" class="gap top">      
+      <div class="skycom-container clearfix">
+        <div class="skycom-6">
+          <img class="title" data-ng-src="{{modelService.cms.config.urls.images + '/word-communications.png'}}"/>  
+          <div class="wrap-video" data-fx="{'type' : 'video', 'id' : 'section-15-video', 'url': '{{data.our_brand_head4_section3_video}}', 'trigger' : 'always', 'loop' : 'false'}" >
+            <div class="brandcon-loader"></div>  
+            <img  data-ng-src="{{data.our_brand_head4_section3_image.url}}"  class="video" />  
+          </div>
+        </div>
+        <div class="skycom-6 right">   
+          <div class="gap top">
+            <p class="gap bottom small"><strong class="bigger">Keeping everyone connected</strong></p>
+            <div data-ng-bind-html="data.our_brand_head4_section3_copy | toTrusted"></div>
+          </div>          
+        </div>
+      </div>
+    </section>
+
+    <section id="section-16" class="gradient">      
+      <div class="skycom-container clearfix">
+        <div class="skycom-6">
+          <div>
+            <img class="title  no-gap" data-ng-src="{{modelService.cms.config.urls.images + '/word-care.png'}}"/>   
+            <p class="gap bottom small"><strong class="bigger">The bigger picture. A better life.</strong></p>
+            <div data-ng-bind-html="data.our_brand_head4_section4_copy | toTrusted"></div>
+          </div>          
+        </div>
+        <div class="skycom-6">
+        <img class="no-gap" data-ng-src="{{data.our_brand_head4_section4_image.url}}" />    
+        </div>
+      </div>
+    </section>
+
+    <a href="#" id="get-in-touch" class="nav-anchor"> </a>
+    <section id="section-17" class="head">    
+      <div data-fx="{'type' : 'ken', 'id' : 'section_17_fx', 'trigger' : 'always', 'pan' : 'rc', 'zoom' : '1.1', 'secs' : '7'}">
+        <div class="brandcon-loader"></div>
+        <img data-ng-src="{{data.our_brand_head5_image.url}}" class="ken"/>
+        <div class="skycom-container clearfix">
+          <h2>Keep in touch</h2>
+        </div>     
+      </div>     
+    </section>
+
+    <section id="section-18" class="gradient">   
+      <div class="skycom-container clearfix">
+        <div class="skycom-6">
+          <div class="text" data-ng-bind-html="data.our_brand_head5_section1_copy | toTrusted"></div>          
+          <div>
+            <a href="mailto:Brandteam@bskyb.com" class="btn">Get in touch</a>
+            <a href="/brandhub/book" class="btn">Book Brand Hub</a>
+          </div>
+        </div>
+        <div class="skycom-6">
+          We hope you liked 'Our Story'. Download a PDF version <a href="#" data-ng-href="{{data.our_brand_head5_section1_attachment}}" target="_blank">here</a>.     
+        </div>
+      </div>
+    </section>
+
+    <div id="sidenav" class="gpu">
+      <ul>
+        <li> <span class="sidenav-highlight"><div class="bg-color"></div><span class="icon"></span></span> <a href="#believe-in-better"> Believe in better </a> </li>
+        <li> <span class="sidenav-highlight"><div class="bg-color"></div><span class="icon"></span></span> <a href="#25-years-of-better"> 25 years of better </a> </li>
+        <li> <span class="sidenav-highlight"><div class="bg-color"></div><span class="icon"></span></span> <a href="#our-purpose"> Our purpose </a> </li>
+        <li> <span class="sidenav-highlight"><div class="bg-color"></div><span class="icon"></span></span> <a href="#our-personality"> Our personality </a> </li>
+        <li> <span class="sidenav-highlight"><div class="bg-color"></div><span class="icon"></span></span> <a href="#our-proposition"> Our proposition </a> </li>
+        <li> <span class="sidenav-highlight"><div class="bg-color"></div><span class="icon"></span></span> <a href="#get-in-touch"> Keep in touch </a> </li>
+      </ul>
+    </div>    
+
+  </div>
+
+</div>
+

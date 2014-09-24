@@ -1,0 +1,22 @@
+.wrap-date-picker {
+  &.inline {
+    .date-picker {
+      & > input, & > span {
+        visibility: hidden!important;
+        position: absolute!important;
+        height: 0!important;
+        overflow: hidden!important;
+        font-size: 1px!important;
+      }
+    }
+    .calendar {
+      display: block !important;
+      position: static !important;
+    }
+    .selected {
+      background-color: #0073c5;
+      color: $white !important;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,104 @@
+#wrap-filters-panel {
+  .animate-filters.ng-hide-add, .animate-filters.ng-hide-remove,
+  .animate-filters.ng-enter, .animate-filters.ng-remove {
+    @include transition(all 0.3s ease-in);
+    display: block !important;
+  }
+  .animate-filters.ng-hide,
+  .animate-filters.ng-hide-add.ng-hide-add-active,
+  .animate-filters.ng-leave.ng-leave-active {
+    min-height: 0;
+  }
+  .animate-filters,
+  .animate-filters.ng-hide-remove.ng-hide-remove-active,
+  .animate-filters.ng-enter.ng-enter-active {
+    height: 0;
+    min-height: 430px;
+  }
+  .wrap-filters {
+    background: #f1f1f1;
+    @include box-shadow(0px 1px 1px 0px rgba(50, 50, 50, 0.15));
+    overflow: hidden;
+    padding-bottom: 30px;
+  }
+  label {
+    font-weight: normal;
+    display: block;
+  }
+  .wrap-instructions {
+    .row {
+      margin: 0;
+    }
+    .instructions {
+      a {
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+    }
+  }
+  .two-columns {
+    a {
+      display: block;
+    }
+    ul {
+      display: inline-block;
+      vertical-align: top;
+      width: 39%;
+    }
+    ul + ul {
+      margin-left: 10%;
+    }
+    .no-margin {
+      margin-left: 0;
+    }
+  }
+  .wrap-filters .row {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+  a {
+    text-transform: capitalize;
+    border-radius: auto;
+    background: none;
+    display: inline-block;
+    color: #000;
+    margin-bottom: 20px;
+    padding: 5px 5px 5px 0;
+    text-decoration: none;
+    & + ul, & + ul + ul {
+      display: none;
+    }
+    &.show {
+      & + ul, & + ul + ul {
+        display: block;
+      }
+    }
+    a {
+      padding: 0;
+    }
+    & + ul, & + ul + ul {
+      display: block;
+    }
+  }
+  li {
+    margin: 5px 0;
+  }
+  .quarter {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+  #btn-filter-assets {
+    float: right;
+    margin: 0;
+    position: relative;
+    top: -40px;
+    color: $link;
+    i {
+      position: relative;
+      bottom: -3px;
+    }
+  }
+  .note {
+    margin-top: 45px;
+  }
+}

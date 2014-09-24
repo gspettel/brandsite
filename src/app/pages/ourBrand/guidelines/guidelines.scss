@@ -1,0 +1,181 @@
+#wrap-guidelines {
+  &, p {
+    font-size: 22px;
+    line-height: 30px;
+  }
+  img {
+    margin-bottom: -8px;
+  }
+  section {
+    position: relative;
+  }
+  p {
+    margin-top: 35px;
+  }
+  h2, img {
+    margin-bottom: 35px;
+    &.no-gap {
+      margin-bottom: 0;
+    }
+  }
+  h2 {
+    margin-top: 0;
+    line-height: 29px;
+  }
+  .gradient {
+    background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/shadow-large.png") no-repeat 50% 100%;
+    padding-bottom: 100px;
+  }
+  img.word {
+    margin-top: 85px;
+    margin-bottom: 0;
+  }
+  img.border {
+    outline: $color-border-gray solid thin;
+  }
+  img + h2, img + p {
+    position: relative;
+    top: -9px;
+  }
+  img.ken, img.video {
+    visibility: hidden;
+  }
+  strong.bigger {
+    font-size: 26px;
+  }
+  .skycom-6 img {
+    max-width: 100%;
+  }
+  .head {
+    margin-bottom: 35px;
+    &:first-child {
+      margin-top: 0;
+    }
+    h2 {
+      font-size: 52px;
+      font-weight: 100;
+      font-family: 'SkyTextMedium';
+      margin: 75px 0 0 0;
+      color: #FFFFFF;
+      position: absolute;
+      top: 0;
+      &.bottom {
+        bottom: 90px;
+        top: auto;
+      }
+      &.dark {
+        color: #000;
+      }
+    }
+    img {
+      margin-bottom: 0;
+    }
+    video, .wrap-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: auto;
+      min-width: 1446px;
+    }
+  }
+  .wrap-video {
+    position: relative;
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: auto;
+    }
+  }
+  .intro {
+    margin-top: 0;
+  }
+  .gap {
+    &.bottom {
+      margin-bottom: 95px;
+      &.small {
+        margin-bottom: 35px;
+      }
+      &.remove {
+        margin-bottom: 0 !important;
+      }
+    }
+    &.top {
+      margin-top: 95px;
+      &.small {
+        margin-top: 35px;
+      }
+      &.medium {
+        margin-top: 50px;
+        font-family: SkyTextRegular;
+      }
+      &.remove {
+        margin-top: 0 !important;
+      }
+    }
+  }
+  .wrap-video {
+    position: relative;
+    video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: auto;
+    }
+  }
+  #sky-marks-end-frames {
+    iframe {
+      height: 311px;
+    }
+    .skycom-6 {
+      height: 319px;
+    }
+  }
+  #wrap-the-way-we-talk > div:first-child {
+    height: 508px;
+  }
+  #the-way-we-talk-spine, #the-way-we-talk-game, #the-way-we-talk-game2 {
+    .box {
+      outline: $color-border-gray solid thin;
+      padding: 60px 0;
+      margin-top: 60px;
+      .skycom-6 > * {
+        margin: 0 60px;
+      }
+    }
+    h3 {
+      font-size: 26px;
+      line-height: 31px;
+      display: inline-block;
+      padding-top: 30px;
+      min-height: 200px;
+      color: $primary-button;
+      &.purple {
+        color: #a23384;
+      }
+    }
+  }
+  #the-way-we-look-spine {
+    strong {
+      display: block;
+      height: 55px;
+    }
+  }
+  #sky-marks-sizing {
+    .right h2, .right div {
+      margin-left: 145px;
+    }
+  }
+  #sidenav a {
+    font-size: 16px;
+  }
+  .brandcon-loader {
+    position: absolute;
+    font-size: 73px;
+    left: 50%;
+    top: 50%;
+    margin-top: -36px;
+    margin-left: -36px;
+    text-align: center;
+  }
+}

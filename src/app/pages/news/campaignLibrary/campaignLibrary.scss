@@ -1,0 +1,123 @@
+#wrap-page-news-campaign-library {
+  .featured {
+    margin-bottom: 45px;
+    width: 100%;
+  }
+  img {
+    max-width: 100%;
+  }
+  .skycom-3 {
+    div {
+      margin-top: 60px;
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+    .intro {
+      margin: 10px 0;
+    }
+  }
+  .searchForm {
+    margin-bottom: 35px;
+  }
+  .skycom-7 {
+    h2.page-title {
+      margin-top: -9px;
+    }
+    div, p {
+      line-height: 1.4;
+      font-size: 19px;
+    }
+    p {
+      padding-bottom: 15px;
+    }
+  }
+  .tabs {
+    border-top: none;
+  }
+  div.campaign {
+    padding: 60px 0 35px;
+    border-bottom: 1px solid $key-line;
+  }
+  h2 + div.campaign {
+    padding-top: 0;
+  }
+  a.delete {
+    float: right;
+  }
+  .wrap-typeahead {
+    display: block !important;
+    input {
+      display: block;
+      height: 56px;
+      width: 100%;
+    }
+    .tt-dropdown-menu {
+      width: 100%;
+    }
+  }
+  .intro.quarter {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
+  .skycom-9, .full {
+    padding-bottom: 35px;
+    min-height: 285px;
+    &:first-child {
+      padding-top: 10px;
+    }
+    h2.page-title {
+      margin-top: -9px;
+    }
+    div, p {
+      line-height: 1.4;
+      font-size: 19px;
+    }
+    p {
+      padding: 7px 0;
+    }
+  }
+  .more {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 0;
+    height: 120px;
+    padding-top: 60px;
+    background: $background-dark url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/gradient1.png") no-repeat top center;
+    a {
+      vertical-align: top;
+    }
+  }
+  .tabs-container.page-nav .tabs {
+    margin-bottom: 0;
+  }
+  .animate-filters,
+  .animate-filters.ng-hide-remove.ng-hide-remove-active,
+  .animate-filters.ng-enter.ng-enter-active {
+    min-height: 260px;
+  }
+  .read-more {
+    font-size: 16px;
+  }
+  h4 {
+    font-size: 26px;
+    line-height: 36px;
+    margin: 20px 0;
+  }
+  pre {
+    line-height: 36px;
+    margin: 20px 0;
+  }
+  .wrap-content {
+    img {
+      max-width: 100%;
+      height: auto !important;
+    }
+    ul {
+      margin-left: 23px;
+      li {
+        list-style-type: disc;
+      }
+    }
+  }
+}

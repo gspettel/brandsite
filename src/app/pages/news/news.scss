@@ -1,0 +1,108 @@
+#wrap-page-news {
+  .skycom-5 {
+    h2 {
+      font-size: 120px;
+      line-height: 85px;
+      font-weight: bold;
+      border-bottom: 4px solid #000;
+      padding-bottom: 10px;
+      display: inline-block;
+      min-width: 141px;
+    }
+    h2, h3 {
+      margin: 0;
+    }
+    h3 {
+      margin-top: -36px;
+      line-height: 26px;
+      padding-bottom: 10px;
+    }
+    div {
+      padding: 15px 0;
+      border-bottom: 1px solid $color-border-gray;
+      &.first {
+        border-top: 1px solid $color-border-gray;
+      }
+    }
+    a {
+      &:hover span {
+        text-decoration: underline;
+      }
+      &.selected {
+        color: #000;
+        &:hover span {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  .day {
+    padding-bottom: 80px;
+    border-bottom: 1px solid $key-line;
+    margin-top: 60px;
+  }
+  .skycom-7 {
+    div, p {
+      line-height: 1.4;
+      font-size: 19px;
+    }
+    p {
+      padding: 7px 0;
+    }
+  }
+  .more {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 0;
+    height: 120px;
+    padding-top: 60px;
+    background: $background-dark url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/gradient1.png") no-repeat top center;
+    a {
+      vertical-align: top;
+    }
+  }
+  .notice p:first-child {
+    padding-bottom: 0;
+  }
+  h4 {
+    font-size: 26px;
+    line-height: 36px;
+    margin: 20px 0;
+  }
+  pre {
+    line-height: 36px;
+    margin: 20px 0;
+  }
+  .wrap-content {
+    max-height: 311px;
+    overflow: hidden;
+    position: relative;
+    &:after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100px;
+      background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/gradient.png") repeat-x 0 100%;
+    }
+    img {
+      height: auto !important;
+      max-width: 100%;
+    }
+    ul {
+      margin-left: 23px;
+      li {
+        list-style-type: disc;
+      }
+    }
+  }
+  .expand .wrap-content {
+    max-height: none;
+    overflow: visible;
+    &:after {
+      display: none;
+      content: '';
+    }
+  }
+}

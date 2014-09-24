@@ -1,0 +1,249 @@
+.lightbox {
+  margin-top: 77px;
+  padding-top: 10px;
+  display: block;
+  cursor: normal;
+  z-index: 1001;
+  @include translate3d(0px, 0px, 282px);
+  .lightbox-close {
+    color: $primary;
+  }
+  .lightbox-content {
+    display: block;
+  }
+  .has-padding {
+    padding: 45px;
+  }
+  h1 {
+    border-bottom: 1px solid $color-border-gray;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    margin-top: 0;
+  }
+  .btn {
+    margin: 0;
+  }
+  [class^="brandcon-"], [class*=" brandcon-"] {
+    color: $primary-button;
+  }
+  .wrap-cancel-session {
+    button {
+      margin-top: 20px;
+    }
+  }
+  .spacing-top {
+    margin-top: 25px;
+  }
+  .spacing-top-15 {
+    margin-top: 15px;
+  }
+  .spacing-top-20 {
+    margin-top: 20px;
+  }
+  .status.error {
+    padding-top: 30px;
+    margin-bottom: 0;
+  }
+  .wrap-notification, .wrap-confirmation {
+    text-align: center;
+    min-height: 262px;
+    p {
+      margin: 0;
+    }
+    [class^="brandcon-"], [class*=" brandcon-"] {
+      padding: 0;
+      margin-bottom: 30px;
+      display: inline-block;
+      font-size: 73px;
+    }
+    .brandcon-tick {
+      color: $color-green-dark;
+    }
+    .brandcon-error.red {
+      color: $error;
+    }
+    .note {
+      margin-top: 15px;
+    }
+  }
+  .guide {
+    text-align: left;
+    p {
+      padding: 5px 0;
+    }
+  }
+  .legal {
+    font-size: 19px;
+    p {
+      line-height: 1.3;
+    }
+  }
+  .wrap-user-edit {
+    .buttons {
+      margin-top: 30px;
+    }
+    .skycom-12.error {
+      margin-top: 30px;
+      margin-bottom: 0;
+    }
+  }
+  .brandhub-view, .assets-view {
+    .wrap-lazy-img {
+      margin-bottom: 30px;
+    }
+    p {
+      float: left;
+      font-size: 18px;
+      line-height: 28px;
+      padding-right: 5px;
+      &.intro {
+        font-weight: bold;
+      }
+    }
+    p.intro {
+      clear: both;
+    }
+    .has-space {
+      margin-top: 30px;
+      margin-bottom: 15px;
+    }
+    .files {
+      float: left;
+      strong {
+        min-width: 30%;
+      }
+      &.clearfix {
+        margin-right: 15px;
+      }
+      &.names {
+        line-height: 30px;
+      }
+    }
+    .clearfix {
+      clear: both;
+    }
+    .wrap-actions {
+      padding-top: 30px;
+      p {
+        padding: 0;
+        margin-bottom: 15px;
+        float: left;
+        clear: left;
+        &.right {
+          float: right;
+          min-width: 233px;
+          clear: none;
+        }
+      }
+      .icon {
+        margin-right: 10px;
+        font-size: 23px;
+        line-height: 23px;
+        color: $link;
+      }
+      .brandcon-download {
+        position: relative;
+        top: -2px;
+      }
+      a {
+        display: inline-block;
+        margin: 5px 0;
+        color: $link;
+        line-height: 22px;
+      }
+    }
+  }
+  .basket {
+    .wrap-actions {
+      margin-top: 0;
+      .icon {
+        font-size: 24px;
+        line-height: 24px;
+        margin-right: 5px;
+        color: $link;
+      }
+    }
+    .error {
+      padding-top: 15px;
+    }
+    .wrap-share-basket {
+      float: left;
+    }
+  }
+  .error {
+    margin-bottom: 15px;
+  }
+  .spinner-blue {
+    display: inline-block;
+    margin-bottom: -8px;
+    margin-left: 8px;
+  }
+  .login {
+    input {
+      width: 100%;
+    }
+    label {
+      display: inline-block;
+      margin-bottom: 30px;
+    }
+    .btn.submit {
+      vertical-align: top;
+      margin-right: 10px;
+    }
+    .wrap-submit {
+      padding-top: 20px;
+    }
+  }
+  .wrap-video, .wrap-gallery {
+    padding-bottom: 30px;
+    .lightbox-close {
+      color: $white;
+    }
+    p {
+      font-size: 19px;
+    }
+    .shade {
+      display: none;
+    }
+    p,h2 {
+      padding: 0 20px;
+    }
+  }
+  .wrap-gallery {
+    h2 {
+      margin-top: 0;
+    }
+  }
+  .wrap-confirmation.error {
+    a {
+      margin-top: 20px;
+    }
+  }
+  .wrap-confirmation {
+    .spacing-top a {
+      margin: 0 15px;
+    }
+  }
+  .wrap-assets-issue-report, .wrap-feedback {
+    textarea {
+      width: 100%;
+      margin: 20px 0 25px;
+    }
+  }
+  .has-form {
+    .skycom-8 {
+      margin-bottom: 15px;
+      input, select {
+        width: 100%;
+      }
+    }
+  }
+  .fixed {
+    border-top: 1px solid $color-border-gray;
+    padding: 30px 45px;
+    margin: 0 -45px;
+    position: fixed;
+    bottom: 0;
+    background: #fff;
+  }
+}

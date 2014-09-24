@@ -1,0 +1,63 @@
+#wrap-page-access {
+  font-size: 19px;
+  header {
+    background: $color-border-gray;
+    font-weight: bold;
+  }
+  .grid {
+    border: 1px solid $color-border-gray;
+    margin-bottom: 30px;
+    .row {
+      border-top: 1px solid $color-border-gray;
+      &:hover {
+        cursor: pointer;
+        a, div {
+          text-decoration: underline;
+        }
+      }
+    }
+    & > div {
+      background: $background-light;
+    }
+    .role, .role p, .email, .email p {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      padding-right: 0;
+    }
+  }
+  .center {
+    text-align: center;
+    .cushioned {
+      padding-top: 8.5%;
+      padding-bottom: 8.5%;
+    }
+  }
+  .pod-title {
+    margin-top: 60px;
+    margin-bottom: 15px;
+    &.first {
+      margin-top: 50px;
+    }
+  }
+  .not-available {
+    line-height: 296px;
+    text-align: center;
+  }
+  .btn {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  [class^="brandcon-"], [class*=" brandcon-"] {
+    padding: 0;
+    margin-bottom: 15px;
+    display: inline-block;
+    font-size: 110px;
+    line-height: 110px;
+    bottom: -34px;
+    position: relative;
+  }
+  .dropdown-menu {
+    font-size: 19px;
+  }
+}

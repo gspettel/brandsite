@@ -1,0 +1,39 @@
+#wrap-page-team {
+  .section-title {
+    margin-bottom: 0;
+  }
+  .team {
+    h2 {
+      margin-bottom: 0;
+      margin-top: 60px;
+    }
+    img {
+      margin-bottom: -5px;
+      max-height: 360px;
+      margin-top: 30px;
+    }
+    div {
+      background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/team-shadow.png") no-repeat;
+      background-position: 105% 100%;
+      min-height: 300px;
+      width: 50%;
+      float: left;
+      text-align: center;
+      overflow: hidden;
+    }
+    .even {
+      background-position: 0% 100%;
+    }
+    .last.even {
+      width: 100%;
+    }
+  }
+  .in-touch {
+    text-align: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+    p {
+      padding: 10px 160px;
+    }
+  }
+}

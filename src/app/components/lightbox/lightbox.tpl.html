@@ -1,0 +1,709 @@
+<div class="lightbox fade grid-1190" data-ng-show="config.show">
+  <div class="backdrop"></div>
+  <div class="skycom-container lightbox-container clearfix">
+    
+    <div class="lightbox-content skycom-6 skycom-offset3 wrap-cancel-session ng-hide" data-ng-show="config.show && config.options.type == 'brandhub.view.cancel'" role="dialog">
+      
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()">
+        <span class="speak">Close</span>
+      </a>
+      
+      <article class="has-padding clearfix">        
+        <h1 class="pod-title">Cancel session</h1>
+        <form class="sky-form">
+          <div data-datepicker date-required data-ng-model="date" class="inline clearfix"></div>
+        <p data-ng-bind="brandhub.date() | date:'EEEE dd MMMM yyyy'" data-ng-show="date.length" class="ng-hide spacing-top-20 intro"></p>
+          <button class="btn clearfix" data-ng-click="selectDate(date)">Confirm cancellation</button>
+        </form>
+      </article>
+
+    </div>
+
+    <div class="lightbox-content skycom-6 skycom-offset3 login ng-hide" data-ng-show="config.options.type == 'login'" role="dialog">
+      
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()" >
+        <span class="speak">Close</span>
+      </a>
+    
+      <article class="has-padding clearfix">        
+        <h1 class="pod-title">Sign in</h1>
+
+        <form class="sky-form" name="loginForm" novalidate autocomplete="off">
+          <div class="skycom-4"><label>Username: </label></div>
+          <div class="skycom-8">
+            <input required type='text' data-ng-model="username" />
+            <span class="after error">Please enter your username</span>
+          </div>
+          <div class="skycom-4 alpha"><label>Password: </label></div>
+          <div class="skycom-8">
+            <input name="pwd_{{session.random}}" required type='password' data-ng-model="password" />
+            <span class="after error">Please enter your password</span>
+          </div>
+          <div class="skycom-12 alpha error ng-hide" data-ng-show="config.options.error.length" data-ng-bind="config.options.error"></div>
+          <div class="skycom-4 alpha clearfix">&nbsp;</div>
+          <div class="skycom-8 wrap-submit">
+            <button class="btn submit" data-ng-disabled="loginForm.$invalid || config.options.loading" data-ng-click="session.login(username, password)">
+              Sign in 
+            </button>
+            <div class="spinner-blue ng-hide" data-ng-show="config.options.loading"> </div>
+          </div>
+        </form>
+
+      </article>
+
+    </div>
+
+    <div class="lightbox-content skycom-6 skycom-offset3 ng-hide" data-ng-show="config.options.type == 'logout'" role="dialog">
+          
+      <article class="has-padding clearfix">        
+        <h1 class="pod-title">Sign out</h1>
+        You are now logged out and you'll be redirected to the homepage
+      </article>
+
+    </div>
+
+    <div class="lightbox-content skycom-10 skycom-offset1 ng-hide basket" data-ng-show="config.options.type == 'assets.basket'" role="dialog">
+        <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()" >
+          <span class="speak">Close</span>
+        </a>
+
+        <article class="basket has-padding clearfix wrap-assets-grid">
+          <h1 class="pod-title has-badge">Asset basket <span class="badge big count blue bounceIn animated" data-ng-bind="config.options.data.length">0</span></h1>
+          
+          <div class="clearfix">
+            <div class="skycom-4 wrap-item fade ng-class:{'alpha': !($index % 3)}" data-ng-repeat="asset in config.options.data">
+              <div>
+                <div data-rn-lazy-background="{{asset.data.thumb}}" rn-lazy-loading-class="is-loading"></div>
+                <p><span>Asset ID: </span><span data-ng-bind="asset.id"></span></p>
+                <p><span>Name: </span><span data-ng-bind="asset.data.title"></span></p>
+                <p><span>Date: </span><span data-ng-bind="asset.data.date_created"></span></p>
+                <p><span>File type: </span><span data-ng-bind="asset.data.filetype[0].data.title"></span></p>
+                <p><span>File size: </span><span data-ng-bind="asset.data.asset_filesize_pretty" title="{{asset.data.asset_filesize_pretty}}"></span></p>
+                <p><span>Owner: </span><span data-ng-bind="asset.data.owner.data.first_name + ' ' + asset.data.owner.data.last_name"></span></p>
+                <div class="wrap-actions clearfix">  
+                  <p class="admin">              
+                    <a href="javascript:void(0);" data-ng-click="basket.remove($index)" class="delete"><i class="icon brandcon-minus"></i> Remove from basket</a>
+                  <p><a target="_self" href="javascript:void(0);" data-ng-href="{{modelService.cms.config.urls.assetsHttpHost + '/api/download/single/' + asset.id}}" download="{{asset.title}}" data-tracking="false"><i class="icon brandcon-download colour" aria-hidden="true"></i>Download</a></p>
+              
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+          <div class="clearfix skycom-12 alpha">
+            <div data-share-input="{{basket.getUrl()}}"></div>
+            <button class="btn right" data-ng-click="basket.clear()">
+              Clear basket
+            </button>
+          </div>
+
+        </article>
+    </div>
+
+    <div class="lightbox-content skycom-6 skycom-offset3 wrap-user-edit has-form ng-hide" data-ng-show="config.options.type == 'access.user.edit'" role="dialog">
+      
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()" >
+        <span class="speak">Close</span>
+      </a>
+    
+      <article class="has-padding clearfix">        
+        <h1 class="pod-title">Edit user</h1>
+        <form class="sky-form" name="userEditForm" novalidate autocomplete="off">
+          <div class="skycom-4"><label>First name: </label></div>
+          <div class="skycom-8">
+            <input required type='text' data-ng-model="config.options.data.data.first_name" />
+            <span class="after error">Please enter your first name</span>
+          </div>
+          <div class="skycom-4 alpha"><label>Surname: </label></div>
+          <div class="skycom-8">
+            <input required type='text' data-ng-model="config.options.data.data.last_name" />
+            <span class="after error">Please enter your surname</span>
+          </div>
+          <div class="skycom-4 alpha"><label>Email: </label></div>
+          <div class="skycom-8">
+            <input required  type="email" data-ng-model="config.options.data.data.email" />
+            <span class="after error">Please enter a valid email</span>
+          </div>
+          <div class="skycom-4 alpha"><label>New password: </label></div>
+          <div class="skycom-8">
+            <input type='password' data-ng-model="config.options.data.data.pass" />
+          </div>
+          <div class="skycom-4 alpha"><label>Role: </label></div>
+          <div class="skycom-8">
+            <select ng-model="config.options.data.data.roleBindingVal" ng-options="role.name for role in config.options.data.data.roles">
+            </select>
+            <span class="after error">Please select a role</span>
+          </div>
+          <div class="skycom-4 alpha" data-ng-show="config.options.data.data.expiry_date"><label>Expires on: </label></div>
+          <div class="skycom-8" data-ng-show="config.options.data.data.expiry_date" data-ng-bind="config.options.data.data.expiry_date * 1000 | date:'dd/MM/yyyy'">                  
+          </div>
+          <div class="skycom-4 alpha" data-ng-show="config.options.data.data.roleBindingVal.name == 'external'"><label>Is locked: </label></div>
+          <div class="skycom-8" data-ng-show="config.options.data.data.roleBindingVal.name == 'external'">
+            <input id="option-locked" type="checkbox" data-ng-model="config.options.data.data.user_locked" class="css-checkbox ng-class:{'checked': config.options.data.data.user_locked}" data-ng-checked="config.options.data.data.user_locked">
+            <label for="option-locked" class="css-label"></label>         
+          </div>
+          <div class="skycom-12 alpha error ng-hide" data-ng-show="config.options.error.length" data-ng-bind="config.options.error"></div>
+          <div class="skycom-12 alpha buttons">
+            <button class="btn submit" data-ng-disabled="userEditForm.$invalid" data-ng-click="access.user.update()">
+              Update user 
+            </button>
+            <div class="spinner-blue ng-hide" data-ng-show="config.options.loading"> </div>
+            <button class="btn right" data-ng-click="access.user.remove()">
+              Delete user 
+            </button>
+          </div>
+        </form>
+
+      </article>
+
+    </div>
+
+    <div class="lightbox-content skycom-6 skycom-offset3 wrap-assets-issue-report has-form ng-hide" data-ng-show="config.options.type == 'assets.issue.report'" role="dialog">
+      
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="asset.report.closeAndBack()" >
+        <span class="speak">Close</span>
+      </a>
+    
+      <article class="has-padding clearfix">        
+        <h1 class="pod-title">Report an asset issue</h1>
+        <form class="sky-form" name="assetReportForm" novalidate autocomplete="off">
+          <div class="skycom-4"><label>Asset ID: </label></div>
+          <div class="skycom-8" data-ng-bind="config.options.data.id"></div>
+          <div class="skycom-4 alpha"><label>First name: </label></div>
+          <div class="skycom-8" data-ng-bind="modelService.user.first_name"></div>
+          <div class="skycom-4 alpha"><label>Surname: </label></div>
+          <div class="skycom-8" data-ng-bind="modelService.user.last_name"></div>
+          <div class="skycom-4 alpha"><label>Email: </label></div>
+          <div class="skycom-8" data-ng-bind="modelService.user.email"></div>
+          <div class="skycom-4 alpha"><label>Comment: </label></div>
+          <div class="skycom-12 alpha">
+            <textarea required data-ng-model="config.options.data.comment"></textarea>
+          </div>
+          <div class="skycom-12 alpha buttons">
+            <button class="btn submit" data-ng-disabled="assetReportForm.$invalid" data-ng-click="asset.report.submit()">
+              Send request
+            </button>
+            <div class="spinner-blue ng-hide" data-ng-show="config.options.loading"> </div>
+            <button class="btn right" data-ng-disabled="assetReportForm.$invalid" data-ng-click="config.options.data.comment = ''">
+              Clear
+            </button>
+          </div>
+        </form>
+
+      </article>
+
+    </div>
+
+
+    <div class="lightbox-content skycom-6 skycom-offset3 wrap-feedback has-form ng-hide" data-ng-show="config.options.type == 'feedback.add'" role="dialog">
+      
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()" >
+        <span class="speak">Close</span>
+      </a>
+    
+      <article class="has-padding clearfix">        
+        <h1 class="pod-title">Tell us what you think</h1>
+        <form class="sky-form" name="feedbackForm" novalidate autocomplete="off">
+          <div class="skycom-4 alpha"><label>Email: </label></div>
+          <div class="skycom-8" data-ng-bind="modelService.user.email"></div>
+          <div class="skycom-4 alpha"><label>Comment: </label></div>
+          <div class="skycom-12 alpha">
+            <textarea required data-ng-model="config.options.data.comment"></textarea>
+          </div>
+          <div class="skycom-12 alpha buttons">
+            <button class="btn submit" data-ng-disabled="feedbackForm.$invalid" data-ng-click="feedback.submit()">
+              Send
+            </button>
+            <div class="spinner-blue ng-hide" data-ng-show="config.options.loading"> </div>
+            <button class="btn right" data-ng-disabled="feedbackForm.$invalid" data-ng-click="config.options.data.comment = ''">
+              Clear
+            </button>
+          </div>
+        </form>
+
+      </article>
+
+    </div>
+
+
+    <div class="lightbox-content skycom-6 skycom-offset3 wrap-assets-issue-view has-form ng-hide" data-ng-show="config.options.type == 'assets.issue.view'" role="dialog">
+      
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()">
+        <span class="speak">Close</span>
+      </a>
+    
+      <article class="has-padding clearfix">        
+        <h1 class="pod-title">Reported issue</h1>
+        <form class="sky-form" name="assetIssueViewForm" novalidate autocomplete="off">
+          <div class="skycom-4"><label>Reported by: </label></div>
+          <div class="skycom-8" data-ng-bind="config.options.data.data.owner.data.first_name + ' ' + config.options.data.data.owner.data.last_name"></div>
+          <div class="skycom-4 alpha"><label>Email: </label></div>
+          <div class="skycom-8" data-ng-bind="config.options.data.data.owner.data.email"></div>
+          <div class="skycom-4 alpha"><label>Comment: </label></div>
+          <div class="skycom-8" data-ng-bind="config.options.data.data.summary"></div>
+          <div class="skycom-4 alpha"><label>Asset link: </label></div>
+          <div class="skycom-8"><a href="/assets/view/{{config.options.data.data.asset.id}}">Click here to view the asset</a></div>
+          <div class="skycom-12 alpha buttons">
+            <button class="btn submit" data-ng-click="asset.report.close()">
+              Mark issue as closed
+            </button>
+            <div class="spinner-blue ng-hide" data-ng-show="config.options.loading"> </div>
+          </div>
+        </form>
+
+      </article>
+
+    </div>
+
+
+    <div class="lightbox-content skycom-6 skycom-offset3 has-form ng-hide" data-ng-show="config.options.type == 'access.user.add'" role="dialog">
+      
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()" >
+        <span class="speak">Close</span>
+      </a>
+    
+      <article class="has-padding clearfix">        
+        <h1 class="pod-title">New user</h1>
+        <form class="sky-form" name="userAddForm" novalidate autocomplete="off">
+          <div class="skycom-4 alpha"><label>Username: </label></div>
+          <div class="skycom-8">
+            <input required type='text' data-ng-model="config.options.data.username" />
+            <span class="after error">Please enter your username</span>
+          </div>
+          <div class="skycom-4 alpha"><label>First name: </label></div>
+          <div class="skycom-8">
+            <input required type='text' data-ng-model="config.options.data.first_name" />
+            <span class="after error">Please enter your first name</span>
+          </div>
+          <div class="skycom-4 alpha"><label>Surname: </label></div>
+          <div class="skycom-8">
+            <input required type='text' data-ng-model="config.options.data.last_name" />
+            <span class="after error">Please enter your surname</span>
+          </div>
+          <div class="skycom-4 alpha"><label>Email: </label></div>
+          <div class="skycom-8">
+            <input required  type="email" data-ng-model="config.options.data.email" />
+            <span class="after error">Please enter a valid email</span>
+          </div>
+          <div class="skycom-4 alpha"><label>Password: </label></div>
+          <div class="skycom-8">
+            <input required type='password' data-ng-model="config.options.data.pass" />
+            <span class="after error">Please enter a password</span>
+          </div>
+          <div class="skycom-4 alpha"><label>Confirm password: </label></div>
+          <div class="skycom-8">
+            <input required type='password' data-ng-model="config.options.data.passConfirmation" />
+            <span class="after error">Please confirm your password</span>
+            <span class="error" data-ng-show="config.options.data.passConfirmation !== config.options.data.pass">Passwords don't match. Please try again</span>
+          </div>
+          <div class="skycom-4 alpha"><label>Role: </label></div>
+          <div class="skycom-8">
+            <select required data-ng-model="config.options.data.role" data-ng-options="role.name for role in config.options.data.roles">
+            </select>
+            <span class="after error">Please select a role</span>
+          </div>
+          <div class="skycom-12 alpha error ng-hide" data-ng-show="config.options.error.length" data-ng-bind="config.options.error"></div>
+          <div class="skycom-12 alpha">
+            <button class="btn submit" data-ng-disabled="userAddForm.$invalid || config.options.data.passConfirmation !== config.options.data.pass" data-ng-click="access.user.add()">
+              Add user 
+            </button>
+            <button type="reset" class="btn right" data-ng-click="access.form.reset()">
+              Reset
+            </button>
+            <div class="spinner-blue ng-hide" data-ng-show="config.options.loading"> </div>
+          </div>
+        </form>
+
+      </article>
+
+    </div>
+
+
+    <div class="lightbox-content skycom-6 skycom-offset3 assets-view fade ng-hide" data-ng-show="config.show && config.options.type == 'assets.view'" role="dialog">
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()" >
+        <span class="speak">Close</span>
+      </a>
+      
+      <article class="has-padding clearfix assets-view">
+        <h1 class="pod-title" data-ng-bind="config.options.data.data.title"></h1>
+        
+        <div class="clearfix" data-rn-lazy-background="{{config.options.data.data.thumb}}" data-ng-class="{'noscale':!config.options.data.data.thumb_scaled, 'dark':config.options.data.data.asset_dark_background}" data-rn-lazy-loading-class="is-loading"></div>
+
+        <div class="clearfix">
+          <p class="intro smaller">Asset ID: </p><p data-ng-bind="config.options.data.id"></p>
+          <p class="intro smaller">Name: </p><p data-ng-bind="config.options.data.data.title"></p>
+          <p class="intro smaller">Date: </p><p data-ng-bind="config.options.data.data.date_created * 1000 | date:'dd MMMM yyyy'"></p>
+          <p class="intro smaller">Type: </p><p data-ng-bind="config.options.data.data.asset_main_category.data.title"></p>
+
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'content'" class="ng-hide">
+            <p class="intro smaller">Content: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_content_content" data-ng-bind="item.data.title"></span>
+            </p>
+          </div>
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'content'" class="ng-hide">
+            <p class="intro smaller">Document: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_content_document" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'master_brand'" class="ng-hide">
+            <p class="intro smaller">Category: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_master_brand_category" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'channels'" class="ng-hide">
+            <p class="intro smaller">Category: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_channels_category" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'products'" class="ng-hide">
+            <p class="intro smaller">Category: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_products_category" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'products'" class="ng-hide">
+            <p class="intro smaller">Product: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_products_product" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+              <span data-ng-show="!config.options.data.data.asset_products_product.length">N/A</span>
+            </p>
+          </div>
+
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'campaigns'" class="ng-hide">
+            <p class="intro smaller">Product: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_campaigns_product_area" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+              <span data-ng-show="!config.options.data.data.asset_campaigns_product_area.length">N/A</span>
+            </p>
+          </div>
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'campaigns'" class="ng-hide">
+            <p class="intro smaller">Media: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_campaigns_media" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'campaigns'" class="ng-hide">
+            <p class="intro smaller">Year: </p>
+            <p data-ng-bind="config.options.data.data.year"></p>
+          </div>
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'campaigns'" class="ng-hide">
+            <p class="intro smaller">Quarter: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.quarter" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'campaigns'" class="ng-hide">
+            <p class="intro smaller">Country: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.country" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'initiatives'" class="ng-hide">
+            <p class="intro smaller">Category: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_initiatives_category" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+          <div data-ng-show="config.options.data.data.asset_main_category.data.select_value === 'initiatives'" class="ng-hide">
+            <p class="intro smaller">Initiative: </p>
+            <p>
+              <span data-ng-repeat="item in config.options.data.data.asset_initiatives_initiative" data-ng-bind="item.data.title + ($last ? '':',')"></span>
+            </p>
+          </div>
+
+          <p class="intro smaller">File type: </p><p data-ng-bind="config.options.data.data.filetype[0].data.title"></p>
+
+          <p><span>File size: </span><span data-ng-bind="config.options.data.data.asset_filesize_pretty" title="{{config.options.data.data.asset_filesize_pretty}}"></span></p>
+
+          <p class="intro smaller ng-hide" data-ng-show="config.options.data.data.summary.length">Description: </p><p data-ng-bind="config.options.data.data.summary"></p>
+
+          <div class="status clearfix error ng-hide" data-ng-show="config.options.loading" data-ng-bind="config.options.message"></div>
+          <div class="wrap-actions clearfix">  
+            <p><a href="javascript:void(0);" data-ng-click="basket.add(config.options.data)"><i class="icon skycon-plus-circle colour" aria-hidden="true"></i>Add to basket</a></p>
+            
+            <p class="right" data-ng-show="config.options.data.data.asset_guideline[0].data.select_value.length"><a target="_blank" href="javascript:void(0);" data-ng-href="/our-brand/guidelines?section={{config.options.data.data.asset_guideline[0].data.select_value}}"><i class="icon skycon-error" aria-hidden="true"></i>How to use this asset</a></p>
+
+            <p><a target="_self" href="javascript:void(0);" data-ng-href="{{modelService.cms.config.urls.assetsHttpHost +  '/api/download/single/' + config.options.data.id}}" download="{{config.options.data.title}}" data-tracking="false"><i class="icon brandcon-download colour" aria-hidden="true"></i>Download</a></p>
+
+            <p class="right"><a href="javascript:void(0);" data-ng-click="asset.report.open(config.options.data.id)" class="delete"><i class="icon skycon-warning"></i>Report any asset issues</a></p> 
+            <p data-ng-show="modelService.user.isSuperuser"><a href="javascript:void(0);" data-ng-href="/assets/edit/{{config.options.data.id}}"><i class="icon brandcon-edit"></i>Edit</a></p>
+            <p class="right" data-ng-show="modelService.user.isSuperuser"><a href="javascript:void(0);" data-ng-click="asset.archive(config.options.data.id, $index)" class="delete"><i class="icon brandcon-folder"></i>Archive</a></p>  
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="lightbox-content skycom-6 skycom-offset3 fade brandhub-view ng-hide" data-ng-show="config.show && config.options.type == 'brandhub.view'" role="dialog">
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()">
+        <span class="speak">Close</span>
+      </a>
+      
+      <article class="has-padding clearfix assets-view">
+        <h1 class="pod-title" data-ng-bind="config.options.data.title"></h1>
+
+        <div class="clearfix">            
+          <p class="intro smaller">Date &amp; time: </p><p data-ng-bind="config.options.data.starttime * 1000| date:'EEEE dd MMMM \'at\' h:mm a'"></p>
+          <p class="intro smaller">Date in market: </p><p data-ng-bind="config.options.data.date_in_market | checkEmpty"></p>
+          <p class="intro smaller">Deadline: </p><p data-ng-bind="config.options.data.deadline | checkEmpty"></p>
+          <p class="intro smaller">Contact: </p><p data-ng-bind="config.options.data.first_name + ' ' + config.options.data.last_name"></p>
+          <p class="intro smaller">Phone no: </p><p data-ng-bind="config.options.data.phone | checkEmpty"></p>
+          
+          <p class="intro smaller has-space">Description: </p>
+          <p class="clearfix" data-ng-bind="config.options.data.description | checkEmpty"></p>
+          
+          <p class="intro smaller has-space">Assets: </p>
+          <div class="files clearfix" data-ng-show="!config.options.data.files.length">
+            <p>N/A</p>
+          </div>
+          <div class="files clearfix names" data-ng-show="config.options.data.files.length">
+            <div data-ng-repeat="file in config.options.data.files"><strong data-ng-bind="file.name"></strong></div>
+          </div>
+          <div class="files" data-ng-show="config.options.data.files.length">
+            <div data-ng-repeat="file in config.options.data.files"><a class="btn" href="javascript:void(0)" data-ng-href="{{file.url}}" target="_blank">Download</a></div>
+          </div>
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="lightbox-content skycom-4 skycom-offset4 fadein-slide-vertical wrap-notification" data-ng-show="config.show && config.options.type == 'notifications.loading'" role="dialog">
+          
+      <div class="has-padding clearfix">        
+        <div class="brandcon-loader"></div>
+        <p class="pod-title smaller unselectable" data-ng-bind="config.options.message1"></p>
+        <p class="pod-title smaller  unselectable" data-ng-bind="config.options.message2"></p>
+        <p class="note  unselectable" data-ng-bind="config.options.message3" data-ng-show="config.options.message3.length"></p>
+        <div class="spacing-top" class="ng-hide" data-ng-show="config.options.allowCancel">
+          <a href="javascript:void(0);" data-ng-click="asset.cancelDownload(true)" class="btn">Cancel</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="lightbox-content skycom-4 skycom-offset4 fadein-slide-vertical wrap-notification ng-hide" data-ng-show="config.show && config.options.type == 'notifications.alert'" role="dialog">
+          
+      <div class="has-padding clearfix">    
+        <div class="brandcon-error" data-ng-class="{'bounceInTrowy animated': config.show && config.options.type == 'notifications.alert'}"></div>
+        <p class="pod-title  smaller  unselectable" data-ng-bind="config.options.message1"></p>
+        <p class="pod-title  smaller  unselectable" data-ng-if="config.options.message2.length" data-ng-bind="config.options.message2"></p>
+      </div>
+
+    </div>
+
+    <div class="lightbox-content skycom-4 skycom-offset4 fadein-slide-vertical wrap-notification ng-hide" data-ng-show="config.show && config.options.type == 'notifications.success'" role="dialog">
+          
+      <div class="has-padding clearfix">  
+        <div class="brandcon-tick" data-ng-class="{'bounceInTrowy animated': config.show && config.options.type == 'notifications.success'}"></div>
+        <p class="pod-title  smaller unselectable" data-ng-bind="config.options.message1"></p>
+        <p class="pod-title  smaller unselectable" data-ng-bind="config.options.message2"></p>
+      </div>
+
+    </div>
+
+
+    <div class="lightbox-content skycom-4 skycom-offset4 fadein-slide-vertical wrap-notification wrap-confirmation ng-hide" data-ng-show="config.show && config.options.type == 'confirmation'" role="dialog">
+          
+      <div class="has-padding clearfix"> 
+        <div class="brandcon-error" data-ng-class="{'bounceInTrowy animated': config.show && config.options.type == 'confirmation'}"></div>
+        <p class="pod-title unselectable" data-ng-bind="config.options.message1"></p>
+        <div class="spacing-top">
+          <a href="javascript:void(0);" data-ng-click="select(true)" class="btn">Yes</a>
+          <a href="javascript:void(0);" data-ng-click="select(false)" class="btn">No</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="lightbox-content modal skycom-4 skycom-offset4 fadein-slide-vertical wrap-confirmation error ng-hide" data-ng-show="config.show && config.options.type == 'confirmation.error'" role="dialog">
+          
+      <div class="has-padding clearfix">   
+        <div class="brandcon-error red" data-ng-class="{'bounceInTrowy animated': config.show && config.options.type == 'confirmation.error'}"></div>
+        <p class="pod-title  smaller unselectable" data-ng-bind-html="config.options.message1 | toTrusted"></p>
+        <a href="javascript:void(0);" data-ng-click="select(true)" class="btn">Close</a>
+      </div>
+
+    </div>
+
+    <div class="lightbox-content skycom-8 skycom-offset2 fadein-slide-vertical guide ng-hide" data-ng-show="config.show && config.options.type == 'assets.guide.naming'" role="dialog">
+          
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()">
+        <span class="speak">Close</span>
+      </a>
+
+      <article class="has-padding clearfix">      
+        <h1 class="pod-title">Quick guide to naming conventions</h1>  
+        <div data-ng-bind-html="modelService.pages.settings.general.naming_guide | toTrusted"></div>
+      </article>
+
+    </div>
+
+    <div class="lightbox-content skycom-8 skycom-offset2 fadein-slide-vertical legal ng-hide" data-ng-show="config.show && config.options.type == 'legal'" role="dialog">
+          
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()" >
+        <span class="speak">Close</span>
+      </a>
+
+      <article class="has-padding clearfix">      
+        <h1 class="pod-title"> Sky Brand Site Terms and Conditions</h1>  
+        <div>
+          <p>These Terms and Conditions shall apply to Your use of the website located at http://www.believeinbetter.com ("the Sky Brand Site").</p>
+          <p>
+          By using the Sky Brand Site You agree to be bound by the terms and conditions set out below. If You do not wish to be bound by these terms and conditions, You should not use the Sky Brand Site.
+          Sky may change these Terms and Conditions from time to time and so you should check these regularly.  Your use of the Sky Brand Site will be deemed an acceptance of the terms existing at that time.
+          </p>
+          <h3>1. Definitions</h3>
+          <p>"You" means you, the user of the Sky Brand Site and "Your" shall be interpreted accordingly. "Sky" means British Sky Broadcasting Limited of Grant Way, Isleworth, Middlesex TW7 5QD and any of its Group Companies.  "Sky Brand Site" shall have the meaning as set out above.</p>
+          
+          <h3>2. Acceptable Use</h3>
+
+          <p>2.1.1 instructions and directions set out on the Sky Brand Site;</p>
+
+          <p>2.1.2 any other written instructions given to You by Sky; and</p>
+
+          <p>2.1.3 Your employment contract and/or any other contract(s) that exist between You and Sky.</p>
+
+          <p>2.1 You must only use the Sky Brand Site and any material on the Sky Brand Site in accordance with:</p>
+
+          <p>2.2 Unless You have Sky's express written consent to do so, You must not post, upload or otherwise make available any material on the Sky Brand Site.</p> 
+
+          <p>2.3 You must not do anything that affects the operability or security of the Sky Brand Site or causes unreasonable inconvenience or offence or disruption to Sky.</p>
+
+          <p>2.4 You must not distribute Your login details for the Sky Brand Site to anybody. </p>
+
+          <h3>3. Confidentiality</h3>
+
+          <p>3.1 You must keep confidential all information and/or material contained on the Sky Brand Site.
+          </p>
+         <p> 3.2 You must not use any of the material or information contained in the Sky Brand Site for any purpose other than to produce marketing materials and/or communications for Sky or as otherwise authorised by Sky in writing. 
+         </p>
+          <p>3.3 You must not disclose to any third party or copy, reproduce, publish or distribute in whole or in part any of the information or material contained on the Sky Brand Site without the prior written consent of Sky.
+          </p>
+          <p>3.4 All summaries, copies, excerpts of any information set out on the Sky Brand Site whether prepared by Sky or not, will be the sole property of Sky, and You will immediately deliver it to Sky upon Sky's request or the termination of these terms and conditions. 
+          </p>
+          <h3>4. Intellectual Property
+          </h3>
+         <p> 4.1 All copyright, trade marks and all other intellectual property rights in all material or content supplied as part of the Sky Brand Site shall remain at all times vested in Sky or Sky's licensors.  You are permitted to use this material or content only as expressly authorised in writing by Sky or Sky's licensors and only as strictly necessary to produce marketing material and/or communications for Sky.  You will not, and You will not assist or facilitate any third party to, copy, download, reproduce, republish, transmit, broadcast, distribute, frame, commercially exploit or create derivative works of or otherwise use such material or content, except as authorised in writing by Sky.
+         </p>
+         <p> 4.2 If You become aware of any such distribution or commercial exploitation, You agree to Sky immediately.</p>
+
+          <p>4.3 You acknowledge that by posting any material on the Sky Brand Site You grant to Sky, Sky's licensees and Sky's licensors and assigns an irrevocable, perpetual, royalty free, worldwide licence to use the materials both within the Sky Brand Site and in any other manner.  The licence extends to copying, distributing, broadcasting, and otherwise transmitting, and adapting and editing the materials. </p>
+
+          <p>4.4 You must cease any use of Sky's trade marks or other intellectual property rights immediately upon receipt of a notice from Sky requiring You to do so.
+          </p>
+          <p>4.5 You must not without the prior written permission of Sky grant any sub-licence of the licence granted in clause 4.1 or otherwise permit or enable any other person to use any of Sky's trademarks or any other intellectual property right. 
+          </p>
+          <p>4.6 You must not without the prior written permission of Sky register any words, images, trade-marks, company, business or trading names, domain names or email addresses which are identical to, confusingly similar with or which incorporate the word SKY, any of Sky's trade-marks or any other Intellectual Property Right.
+          </p>
+          <p>4.7 You must at Sky's option forthwith either cancel or transfer to Sky (or a person nominated by Sky) all right, title and interest in and to any words, images, trade marks, domain names or email addresses registered or controlled by or on behalf of the Retailer that contain any Sky trade mark or any other Intellectual Property Right.
+          </p>
+          <p>4.8 You must not in any way alter the material provided on the Sky Brand Site unless such alterations shall first have been approved by Sky in writing.
+          </p>
+          <h3>5. Third party websites
+          </h3>
+          <p>5.1 You acknowledge and agree that Sky:
+          </p>
+          <p>5.1.1 is not responsible for the availability of any third party websites or material You access through the Sky Brand Site;
+          </p>
+          <p>5.1.2 does not endorse and shall not be held responsible or liable for any content, advertising, products or services on or available from such websites or material;
+          </p>
+          <p>5.1.3 Is not responsible or liable, directly or indirectly for any damage or loss caused or alleged to be caused by or in connection with Your use or reliance on any content, advertising, products or services available on or through any such website. 
+          </p>
+          <h3>6. Liability for and information provided on the Sky Brand Site
+          </h3>
+          <p>6.1 Sky will endeavour to provide the Sky Brand Site using all reasonable care.  Except as required by law, Sky does not promise that the material contained in the Sky Brand Site, or any of the functions contained in the Sky Brand Site or its server will operate without interruption or delay or will be error free, free of viruses or bugs or is compatible with any other software or material.
+          </p>
+          <p>6.2 Sky will be liable for any fraudulent misrepresentations Sky make and for any death or personal injury caused by Sky's negligence. Sky will not be responsible or liable to You for any other loss or damage that You or any third party may suffer as a result of using or in connection with Your use of the Sky Brand Site.
+          </p>
+          <h3>7. Indemnity</h3> 
+          <p>You agree to indemnify Sky, and/or any of Sky's affiliates and Sky's and Sky's affiliates officers, directors and employees, immediately on demand, against all claims, liability, damages, costs and expenses, including legal fees, arising out of any breach of these terms and conditions by You or any other liabilities arising out of Your use of the Sky Brand Site.
+          </p>
+          <h3>8. Termination</h3>
+          <p>Sky reserves the right immediately to terminate Your use of the Sky Brand Site if You breach or Sky has reasonable grounds to believe that You are likely to breach these terms and conditions or You otherwise engage in conduct which Sky determines in its sole discretion to be unacceptable.
+          </p>
+          <h3>9. General</h3>
+
+          <p>9.1 Governing Law</p>
+          <p>These terms and conditions and the Sky Brand Site are governed by English law. Disputes can be dealt with by the English courts.
+          </p>
+          <p>9.2 Third Party Rights</p>
+          <p>These terms and conditions apply between Sky and You.  Except as specified in clause 6 of these terms and conditions, no other person is entitled to benefit under these Terms and Conditions.
+          </p>
+          <p>Corporate Information</p>
+          <p>British Sky Broadcasting Limited (Registration No. 2906991), Sky Interactive Limited (Registration No. 3554332), Sky-In-Home Service Limited (Registration No. 2067075) and Sky Subscribers Services Limited (Registration No. 2340150) are direct or indirect subsidiaries of British Sky Broadcasting Group plc (Registration No. 2247735). All of the companies mentioned in this paragraph are incorporated in England and Wales and share the same registered office at Grant Way, Isleworth, Middlesex TW7 5QD.</p>
+          <br/>
+          <p><strong>Last updated: 15 September 2011</strong></p>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="lightbox-content skycom-12 alpha fade wrap-video ng-hide" data-ng-show="config.show && config.options.type == 'video'" role="dialog">
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()">
+        <span class="speak">Close</span>
+      </a>   
+
+      <article>
+        <div class="skycom-12 alpha" data-ng-show="modelService.cms.isIE8 && !modelService.cms.hasFlash">
+          <div class="cushioned">
+              Flash Player not detected. This website requires Flash v10 or above to render video content.
+          </div>
+        </div>
+
+        <div data-ng-if="config.show && config.options.data.url.length && !(modelService.cms.isIE8 && !modelService.cms.hasFlash)" iframe="config.options.data.url"></div>
+
+        <div class="skycom-12 alpha">
+          <div class="cushioned">
+            <h2 class="pos-title" data-ng-bind="config.options.data.title"></h2>
+            <div data-ng-bind-html="config.options.data.copy | toTrusted"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="lightbox-content skycom-12 alpha fade wrap-gallery ng-hide" data-ng-show="config.show && config.options.type == 'gallery'" role="dialog">
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.close()">
+        <span class="speak">Close</span>
+      </a>   
+
+      <div data-ng-if="config.options.type == 'gallery' && !config.options.readyToRemove">
+        <div data-carousel="config.options.data" data-on-change="gallery.onChange"></div>
+      </div>
+
+      <article>
+        <div class="skycom-12 alpha">
+          <div class="cushioned">
+            <h2 class="pos-title" data-ng-bind="config.options.title"></h2>
+            <div data-ng-bind="config.options.data[config.options.slideIndex].description"></div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="lightbox-content skycom-4 skycom-offset4 fadein-slide-vertical wrap-notification ng-hide" data-ng-show="config.show && config.options.type == 'notifications.basket.added'" role="dialog">
+          
+      <div class="has-padding clearfix">   
+        <div class="brandcon-tick" data-ng-class="{'bounceInTrowy animated': config.show && config.options.type == 'notifications.basket.added'}"></div>
+        <p class="pod-title  smaller">Successfully</p>
+        <p class="pod-title  smaller">added to basket!</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>

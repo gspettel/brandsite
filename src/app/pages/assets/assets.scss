@@ -1,0 +1,29 @@
+#wrap-assets {
+  a.delete {
+    float: right;
+  }
+  .page-title {
+    margin-bottom: 15px;
+  }
+  .searchForm {
+    margin-bottom: 35px;
+  }
+  .tabs-container.page-nav .tabs {
+    border-top: none;
+    margin-top: 15px;
+    margin-bottom: 0;
+  }
+  .loader {
+    text-align: center;
+    margin-top: -40px;
+  }
+  .brandcon-loader {
+    padding: 0;
+    margin-bottom: 60px;
+    display: inline-block;
+    font-size: 50px;
+    line-height: 50px;
+    bottom: -34px;
+    position: relative;
+  }
+}

@@ -1,0 +1,220 @@
+ <div id="wrap-filters-panel" class="clearfix" data-ng-controller="FiltersPanelCtrl">
+
+    <div class="wrap-filters animate-filters" data-ng-show="modelService.showFilters">  
+        
+      <div class="skycom-container">
+        <div class="row">        
+
+          <section data-ng-show="$stateParams.mainCategory === 'master-brand'" class="ng-hide">
+            <div class="skycom-2">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_master_brands_categories = !btnClick_master_brands_categories" data-ng-class="{'show': btnClick_master_brands_categories}">Category:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.master_brands_categories">                
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li>
+              </ul> 
+            </div>
+            
+          </section>
+
+          <section data-ng-show="$stateParams.mainCategory === 'channels'" class="ng-hide">
+            
+            <div class="skycom-4  two-columns">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_channels_brands = !btnClick_channels_brands" data-ng-class="{'show': btnClick_channels_brands}">Brand:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.channels_brands.slice(0,6)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul>   
+              <ul>
+                <li data-ng-repeat="option in filters.available.channels_brands.slice(6)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul>  
+            </div>
+
+            <div class="skycom-5 two-columns">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_channels_categories = !btnClick_channels_categories" data-ng-class="{'show': btnClick_channels_categories}">Category:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.channels_categories.slice(0,6)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+              <ul>
+                <li data-ng-repeat="option in filters.available.channels_categories.slice(6)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+            
+          </section>
+
+          <section data-ng-show="$stateParams.mainCategory === 'products'" class="ng-hide">
+            <div class="skycom-4 two-columns">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_products_products = !btnClick_products_products" data-ng-class="{'show': btnClick_products_products}">Product:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.products_products.slice(0,6)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+              <ul>
+                <li data-ng-repeat="option in filters.available.products_products.slice(6)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+            
+
+            <div class="skycom-3">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_products_categories = !btnClick_products_categories" data-ng-class="{'show': btnClick_products_categories}">Category:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.products_categories">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+            
+          </section>
+
+          <section data-ng-show="$stateParams.mainCategory === 'campaigns'" class="ng-hide">
+            <div class="skycom-4 two-columns">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_campaigns_product_areas = !btnClick_campaigns_product_areas" data-ng-class="{'show': btnClick_campaigns_product_areas}">Campaigns:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.campaigns_product_areas.slice(0,8)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+              <ul>
+                <li data-ng-repeat="option in filters.available.campaigns_product_areas.slice(8)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+
+            <div class="skycom-2">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_campaigns_medias = !btnClick_campaigns_medias" data-ng-class="{'show': btnClick_campaigns_medias}">Media:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.campaigns_medias">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+            
+            <div class="skycom-2">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_countries = !btnClick_countries" data-ng-class="{'show': btnClick_country}">Country:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.countries">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+
+            <div class="skycom-2">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_years = !btnClick_years" data-ng-class="{'show': btnClick_years}">Year:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.years">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li>
+              </ul> 
+
+              <a class="intro quarter" href="javascript:void(0);" data-ng-click="btnClick_quarters = !btnClick_quarters" data-ng-class="{'show': btnClick_quarters}">Quarter:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.quarters">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+
+            </div> 
+            
+          </section>
+
+          <section data-ng-show="$stateParams.mainCategory === 'initiatives'" class="ng-hide">
+            
+            <div class="skycom-6 two-columns">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_initiatives_initiatives = !btnClick_initiatives_initiatives" data-ng-class="{'show': btnClick_initiatives_initiatives}">Initiative:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.initiatives_initiatives.slice(0,7)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+              <ul>
+                <li data-ng-repeat="option in filters.available.initiatives_initiatives.slice(7)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+
+            <div class="skycom-3">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_initiatives_categories = !btnClick_initiatives_categories" data-ng-class="{'show': btnClick_initiatives_categories}">Category:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.initiatives_categories">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+
+          </section>
+
+          <section data-ng-show="$stateParams.mainCategory === 'content'" class="ng-hide">
+
+            <div class="skycom-2">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_content_contents = !btnClick_content_contents" data-ng-class="{'show': btnClick_content_contents}">Content:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.content_contents">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected" data-ng-change="clearSiblings(filters.available.content_contents, option)">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+
+            <div class="skycom-3">
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_content_documents = !btnClick_content_documents" data-ng-class="{'show': btnClick_content_documents}">Document:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.content_documents" data-ng-hide="option.value === 'asset-request-form' && (filters.available.content_contents[1].selected || filters.available.content_contents[2].selected) || option.value === 'approvals-process-formula-1' && (filters.available.content_contents[0].selected || filters.available.content_contents[1].selected)">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+            </div>
+
+          </section>
+
+          <div class="skycom-3 two-columns filetypes" data-ng-class="{'skycom-2': $stateParams.mainCategory === 'campaigns', 'alpha': $stateParams.mainCategory === 'all' }">
+            <a class="intro" href="javascript:void(0);" data-ng-click="btnClickFiletypes = !btnClickFiletypes" data-ng-class="{'show': btnClickFiletypes}">File type:</a>
+            <ul data-ng-hide="$stateParams.mainCategory === 'content'">
+              <li data-ng-repeat="option in filters.available.filetypes.slice(0, 10)">
+                <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+              </li>
+            </ul>
+            <ul data-ng-class="{'no-margin': $stateParams.mainCategory === 'content'}">
+              <li data-ng-repeat="option in filters.available.filetypes.slice(10)" data-ng-hide="$stateParams.mainCategory === 'content' && option.value !== 'doc' && option.value !== 'pdf' && option.value !== 'xls'">
+                <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+              </li>
+            </ul> 
+          </div> 
+
+        </div>   
+
+      </div>
+    </div>
+
+  </div> 

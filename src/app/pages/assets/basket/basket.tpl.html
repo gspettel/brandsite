@@ -1,0 +1,31 @@
+<div class="lightbox-content skycom-10 skycom-offset1" role="dialog">
+      
+      <a class="internal-link lightbox-close skycon-close" href="javascript:void(0);" data-ng-click="config.closeAndGoBack()">
+        <span class="speak">Close</span>
+      </a>
+      
+      <article class="has-padding clearfix">
+        <h1 class="section-title has-badge">Asset basket <span class="badge big count blue bounceIn animated ng-binding" data-ng-bind="assets.length">0</span></h1>
+        
+        <div class="clearfix wrap-assets-grid">
+          <div class="skycom-4 wrap-item fade ng-class:{'alpha': !($index % 3)}" data-ng-repeat="asset in assets">
+            <div>
+              <div data-rn-lazy-background="{{asset.data.thumb}}" rn-lazy-loading-class="is-loading"></div>
+              <p><span>Asset id: </span><span data-ng-bind="($index + 1) + ' - ' + asset.id"></span></p>
+              <p><span>Name: </span><span data-ng-bind="asset.data.title"></span></p>
+              <p><span>Date: </span><span data-ng-bind="asset.data.date_created"></span></p>
+              <p><span>File type: </span><span data-ng-bind="asset.data.filetype[0].data.title"></span></p>
+              <p><span>File size: </span><span data-ng-bind="asset.data.asset_filesize_pretty" title="{{asset.data.asset_filesize_pretty}}"></span></p>
+              <p><span>Owner: </span><span data-ng-bind="asset.data.owner.data.first_name + ' ' + asset.data.owner.data.last_name"></span></p>
+              <div class="wrap-actions">  
+                <p class="admin">              
+                  <a href="javascript:void(0);" data-ng-click="remove($index)" class="delete"><i class="icon delete"></i>Remove from basket</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="clearfix skycom-12 alpha align-center"><button class="btn" data-ng-click="downloadAll()">Download all assets</button></div>
+      </article>
+</div>

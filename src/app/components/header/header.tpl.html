@@ -1,0 +1,63 @@
+  <header class="main">
+
+    <div class="skycom-message-container ng-hide" data-ng-show="showIE8Notice && modelService.cms.isIE8">
+      <div class="skycom-container">
+        <h2>Your browser is out of date</h2>            
+        <p>It may not display all the features of this and other websites. Please <a href="http://whatbrowser.org" target="_blank">click here</a> to learn how to update your browser or contact your IT support if on a corporate network</p>
+        <a href="javascript:void(0);" class="skycom-close" data-ng-click="closeNotice()"><i class="sprite-close-dark"></i>Close</a>
+      </div>     
+    </div>
+
+    <nav role="navigation" class="skycom-container">
+
+      <ul class="h has-spacing">
+
+        <li class="brand"><a href="/home"><h2>Brand Site</h2></a></li>
+
+        <li data-ng-show="modelService.user.isLoggedin && !modelService.user.isLocked" class="ng-hide menu" data-ng-class="{'selected': checkIfCurrent('our-brand')}">
+          <a href="/our-brand">Our Brand</a>
+        </li>
+        
+        <li data-ng-show="modelService.user.isLoggedin && !modelService.user.isLocked" class="ng-hide menu" data-ng-class="{'selected': checkIfCurrent('news')}">
+          <a href="/news">News</a><span class="badge bounceIn animated count red" data-ng-bind="notifications.total" data-ng-show="notifications.total > 0"></span>
+        </li>
+
+        <li data-ng-show="modelService.user.isLoggedin && !modelService.user.isLocked" class="ng-hide menu" data-ng-class="{'selected': checkIfCurrent('assets')}">
+          <a href="/assets/all">Assets</a>
+        </li>
+
+        <li data-ng-show="modelService.user.isLoggedin" class="ng-hide menu" data-ng-class="{'selected': checkIfCurrent('team')}">
+          <a href="/team">Team</a>
+        </li>
+
+        <li class="menu ng-hide" data-ng-class="{'selected': checkIfCurrent('upload')}" data-ng-show="modelService.user.permissions['asset-upload']">
+          <a href="/upload">Upload</a>
+        </li>
+
+        <li data-ng-show="modelService.user.isSuperuser" class="ng-hide menu" data-ng-class="{'selected': checkIfCurrent('admin')}">
+          <a href="/admin/activity">Admin</a>
+        </li>
+
+        <li data-ng-show="modelService.user.isLoggedin && !modelService.user.isInternal" class="ng-hide right">
+          <span class="name" title="{{modelService.user.first_name + ' ' + modelService.user.last_name[0]}}" data-ng-bind="modelService.user.first_name + ' ' + modelService.user.last_name[0]"></span> 
+          <a href="/logout">| Sign out</a>
+        </li>
+
+        <li data-ng-show="!modelService.user.isLoggedin || modelService.user.isInternal" class="ng-hide right">
+          <a href="/login">Sign in</a>
+        </li>
+
+        <li class="right basket ng-hide" data-ng-show="modelService.user.isLoggedin && !modelService.user.isLocked">
+          <a  href="javascript:void(0);" data-ng-click="openBasket()" data-tracking-label='basket'>
+            <i><span class="speak"></span></i>
+            <span class="badge count"  data-ng-show="modelService.basket.length"  data-ng-bind="modelService.basket.length"></span>
+          </a>
+        </li>
+
+        <li data-ng-show="modelService.user.permissions['brandhub-book']" class="ng-hide right brand-hub"><a class="btn" href="/brandhub/book">Book Brand Hub</a></li>   
+
+      </ul>
+
+    </nav>
+
+  </header>

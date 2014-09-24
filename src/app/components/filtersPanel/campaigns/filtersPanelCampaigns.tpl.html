@@ -1,0 +1,55 @@
+ <div id="wrap-filters-panel" class="clearfix" data-ng-controller="FiltersPanelCampaignsCtrl">
+
+    <div class="wrap-filters animate-filters" data-ng-show="modelService.showFilters">
+      <div class="skycom-container">
+
+        <div class="row">          
+
+          <section>
+
+            <div class="skycom-2">
+
+              <a class="intro" href="javascript:void(0);">Year:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.years" data-ng-hide="option.value < 2013">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-change="clearSiblings(filters.available.years, option)"  data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.value"></span></label>
+                </li>
+              </ul> 
+
+            </div> 
+
+            <div class="skycom-2">
+
+              <a class="intro quarter" href="javascript:void(0);" data-ng-click="btnClick_quarters = !btnClick_quarters" data-ng-class="{'show': btnClick_quarters}">Quarter:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.quarters">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+
+            </div> 
+
+            <div class="skycom-2">
+
+              <a class="intro" href="javascript:void(0);" data-ng-click="btnClick_country = !btnClick_country" data-ng-class="{'show': btnClick_country}">Country:</a>
+              <ul>
+                <li data-ng-repeat="option in filters.available.countries">
+                  <input id="option-{{option.id}}" type="checkbox" data-ng-model="option.selected" class="css-checkbox ng-class:{'checked': option.selected}" data-ng-checked="option.selected">
+                  <label for="option-{{option.id}}" class="css-label"><span data-ng-bind="option.title"></span></label>
+                </li> 
+              </ul> 
+
+            </div>  
+
+          </section>
+
+        </div>   
+
+        <div class="skycom-12 alpha note clearfix">* Previous years' Campaigns can be found in the Assets section</div>
+
+      </div>
+    </div>
+
+  </div> 

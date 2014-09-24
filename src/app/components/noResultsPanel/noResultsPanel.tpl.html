@@ -1,0 +1,12 @@
+<div id="no-results-panel">
+  <p class="section-title">Sorry no results match your search criteria</p>
+  <p class="section-title smaller">
+    Please 
+      <span class="ng-hide" data-ng-show="stateParams.title.length">
+        <a href="#" data-ng-click="refineSearch()">refine</a>/<a href="javascript:void(0);" data-ng-click="clearSearch()">clear</a> your search terms or 
+      </span>
+      <a class="ng-hide" data-ng-show="!modelService.showFilters" href="javascript:void(0);" data-ng-click="toggleFilters()">update</a>
+      <span class="ng-hide" data-ng-show="modelService.showFilters">update</span>
+    your filters
+  </p>
+</div>

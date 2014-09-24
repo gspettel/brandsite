@@ -1,0 +1,94 @@
+#wrap-page-activity {
+  padding-bottom: 30px;
+  font-size: 18px;
+  #wrap-page-title {
+    margin-bottom: 0;
+  }
+  .not-available {
+    line-height: 296px;
+    text-align: center;
+  }
+  .more {
+    padding-top: 15px;
+    text-align: right;
+    .col-xs-12 {
+      padding-right: 0;
+    }
+    i {
+      position: relative;
+      bottom: -3px;
+    }
+  }
+  header {
+    background: #eaeaea;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+  .grid {
+    border: 1px solid #eaeaea;
+    .row {
+      border-top: 1px solid #eaeaea;
+      &:hover {
+        cursor: pointer;
+        a, div {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .right {
+    text-align: right;
+    .cushioned {
+      padding-top: 8.5%;
+      padding-bottom: 8.5%;
+    }
+  }
+  .hi {
+    margin: 45px 0 75px;
+  }
+  .pod-title {
+    margin-top: 112px;
+    margin-bottom: 15px;
+    &.first {
+      margin-top: 92px;
+    }
+  }
+  .awaiting, .brand-hub, .activity, .issues {
+    border: 1px solid #eaeaea;
+    background: $white;
+    max-height: 304px;
+    @include transition(max-height 0.3s ease-in);
+    overflow: hidden;
+    &.full {
+      max-height: 5000px;
+      height: auto;
+      @include transition(max-height 0.3s ease-in);
+    }
+  }
+  .activity {
+    background: $background-light;
+  }
+  .brand-hub {
+    .day {
+      display: inline-block;
+      width: 80px;
+    }
+  }
+  .actual-row {
+    border-top: 1px solid $color-border-gray;
+    padding: 15px 0;
+  }
+  .btn {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  [class^="brandcon-"], [class*=" brandcon-"] {
+    padding: 0;
+    margin-bottom: 15px;
+    display: inline-block;
+    font-size: 110px;
+    line-height: 110px;
+    bottom: -34px;
+    position: relative;
+  }
+}

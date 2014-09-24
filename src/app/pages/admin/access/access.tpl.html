@@ -1,0 +1,98 @@
+<div id="wrap-page-access">
+
+  <div id="wrap-page-title" class="skycom-container">
+    <div class="row">
+      <div class="col-xs-12">
+
+        <h1 class="section-title">Admin</h1>
+
+        <form class="sky-form searchForm ng-pristine ng-valid" name="searchForm" novalidate="" autocomplete="off">
+          <div class="ng-isolate-scope wrap-typeahead"><input class="inputBox ng-pristine ng-valid" data-ng-model="search" type="text" placeholder="Type name here...">
+          <a href="javascript:void(0);" data-ng-show="search.length" data-ng-click="search = ''" class="icon fade clear ng-hide"><i class="skycon-close" aria-hidden="true"></i></a><a href="javascript:void(0);" data-ng-click="focus()" class="icon search"><i class=" skycon-search" aria-hidden="true"></i></a></div>
+        </form>
+
+        <div id="base-styles-tab-contents" class="tabpanel selected">
+            <section class="tabcontents tabs-container page-nav">
+                <ul class="nav tabs clearfix">
+                    <li class="tab">
+                      <a href="/admin/activity" class="skycom-ellipsis internal-link">Activity</a>
+                    </li>
+                    <li class="tab selected">
+                      <a href="/admin/access" class="skycom-ellipsis internal-link">Access</a>
+                    </li>
+                    <li class="tab">
+                      <a href="/admin/assets/awaiting" class="skycom-ellipsis internal-link">Approve</a>
+                    </li>
+                    <li class="tab">
+                      <a data-ng-href="/content/page/?news={{notifications.total}}" target="_self" class="skycom-ellipsis internal-link" data-tracking="false">Edit</a>
+                    </li>
+                    <li class="tab">
+                      <a href="/brandhub/view" class="skycom-ellipsis internal-link">Brand hub</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+      </div>
+    </div>
+
+    <h3 class="pod-title first has-badge">Users <span class="badge big count blue bounceIn animated ng-binding" data-ng-bind="users.length">0</span></h3>
+
+  </div>
+
+  <div class="skycom-container">
+      
+    <header class="clearfix">
+      <div class="skycom-2"><p class="cushioned">Username</p></div>
+      <div class="skycom-2"><p class="cushioned">First name</p></div>
+      <div class="skycom-2 username"><p class="cushioned">Surname</p></div>
+      <div class="skycom-2"><p class="cushioned">Email</p></div>
+      <div class="skycom-2 role"><p class="cushioned">Role</p></div>
+      <div class="skycom-2 center">        
+          <p class="cushioned"><a class="form-submit btn primary-cta" href="javascript:void(0);" data-ng-click="setData(user)" data-ng-href="/admin/access/user/add">New</a></p>
+      </div>
+    </header>
+  
+    <div class="grid clearfix" data-context-menu data-target="contextMenu" data-ng-class="{ 'highlight': highlight, 'expanded' : expanded }">
+
+      <div class="ng-hide" data-ng-show="users.length">
+        <div data-ng-repeat="user in users | filter:search" class="row clearfix">
+          <div class="skycom-2"><p class="cushioned" data-ng-bind="user.name" title="{{user.name}}"></p></div>
+          <div class="skycom-2"><p class="cushioned" data-ng-bind="user.data.first_name" title="{{user.data.first_name}}"></p></div>
+          <div class="skycom-2"><p class="cushioned" data-ng-bind="user.data.last_name" title="{{user.data.last_name}}"></p></div>
+          <div class="skycom-2 email"><p class="cushioned" data-ng-bind="user.data.email" title="{{user.data.email}}"></p></div>
+          <div class="skycom-2 role"><p class="cushioned" data-ng-bind="user.data.role | toName" title="{{user.data.role | toName}}"></p></div>
+          <div class="skycom-2 center">
+            <p class="cushioned"><a class="form-submit btn primary-cta" href="javascript:void(0);" data-ng-click="setData(user)" data-ng-href="/admin/access/user/edit/{{user.id}}">Edit</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="not-available" data-ng-show="!users.length">
+        <span class="ng-hide" data-ng-show="completed">No new assets are available!</span>
+        <div data-ng-show="!completed">
+          <div class="brandcon-loader"></div>
+        </div>
+      </div>
+
+      <div class="wrap-context-menu" id="contextMenu">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">          
+          <li role="presentation">
+            <a class="pointer" href="javascript:void(0);" data-ng-href="/admin/access" role="menuitem" tabindex="-1">Show all</a>
+          </li>
+          <li role="presentation">
+            <a class="pointer title" role="menuitem" tabindex="-1" href="javascript:void(0);"><strong>Only display:</strong></a>
+          </li>
+          <li role="presentation" data-ng-repeat="role in roles" >
+            <a class="pointer" href="javascript:void(0);" data-ng-href="/admin/access?role={{role.id}}" role="menuitem" tabindex="-1" data-ng-bind="role.name | toName"></a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  
+  </div>
+
+  <div data-goto-top data-track-element="#wrap-page-access"></div>
+
+</div>

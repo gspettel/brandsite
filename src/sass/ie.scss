@@ -1,0 +1,221 @@
+@import "variables";
+
+header
+,nav
+,section
+,article
+,aside
+,footer
+,hgroup {
+  display: block;
+}
+
+@font-face {
+  font-family: 'SkyTextMedium';
+  src: url("fonts/sky_medium.eot");
+}
+
+
+@font-face {
+  font-family: 'SkyTextRegular';
+  src: url("fonts/sky_regular.eot");
+}
+
+
+body.template-admin {
+  header.main {
+    width: 100%;
+  }
+}
+
+html.lt-ie9 {
+  &, body, header.main {
+    min-width: 1190px;
+  }
+  &, body {
+    height: 100%;
+  }
+}
+
+html.lt-ie9 {
+  #wrap-view {
+    min-height: 100%;
+  }
+  body {
+    padding-top: 110px;
+    &.has-lightbox {
+      padding-right: 17px;
+      header.main {
+        right: 17px;
+        width: 100%;
+      }
+    }
+    &.home {
+      header.main {
+        right: 0;
+      }
+      &.has-lightbox {
+        header.main {
+          right: 17px;
+        }
+      }
+    }
+  }
+  #wrap-our-brand, #wrap-guidelines {
+    .head .brandcon-loader, .wrap-video .brandcon-loader {
+      display: none !important;
+    }
+    #sidenav {
+      border: 1px solid #DCDCDC;
+    }
+  }
+  #wrap-page-upload .right-side > div {
+    min-height: 212px;
+  }
+  .lightbox {
+    background: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/transparent-white.png") !important;
+    filter: none !important;
+  }
+  a.btn, .btn {
+    &.black {
+      border: 1px solid #757575;
+      &:before {
+        background-color: #4D4D4D;
+      }
+    }
+  }
+  .wrap-typeahead input {
+    line-height: 56px;
+  }
+  #wrap-home {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    .ie8-full-image {
+      position: absolute;
+      top: 70px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      margin: auto;
+      min-width: 50%;
+      min-height: 50%;
+    }
+  }
+  input[type=checkbox].css-checkbox.checked + label.css-label:before {
+    background-position: 0 -21px;
+    content: '  ';
+  }
+  .wrap-title-validation input {
+    padding-top: 10px;
+  }
+}
+
+.moxie-shim {
+  z-index: 2;
+}
+
+.wrap-file-drop-panel.preview {
+  .moxie-shim {
+    position: absolute !important;
+    top: 15px !important;
+    left: 15px !important;
+    width: 160px !important;
+    height: 31px !important;
+    overflow: hidden !important;
+    z-index: 2 !important;
+  }
+}
+
+.no-backgroundsize .skybs-ob-coverflow-panel-content .btn-play-video {
+  background-image: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/icon_playvideo_40x40.png") !important;
+}
+
+.no-borderradius .skybs-ob-coverflow-slider-marker-dot {
+  background-image: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/coverflow_slider_marker.png");
+  background-color: transparent;
+}
+
+.lt-ie9 #sidenav li .sidenav-highlight .icon {
+  visibility: hidden;
+}
+
+.lt-ie9 #sidenav.closed li.active .sidenav-highlight .icon {
+  visibility: visible;
+}
+
+.skycom-message-container {
+  display: block;
+  text-align: left;
+  height: 60px;
+  z-index: 300;
+  color: #333;
+  font-family: Helvetica,Arial;
+  font-size: .8em;
+  position: relative;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  background: #ebebeb;
+  overflow: hidden;
+  h2 {
+    font-family: SkyTextRegular,Helvetica,Arial;
+    font-size: 1.4em;
+    line-height: .8em;
+    font-weight: 400;
+    padding: 0 20px 0 0;
+    margin: 10px 0px 7px;
+  }
+  .skycom-container {
+    position: relative;
+  }
+  .skycom-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
+    line-height: 1.25em;
+  }
+  .sprite-close-dark {
+    background-image: url("https://d2nti24k3uksaq.cloudfront.net/site/templates/live/assets/images/sky-sprite.png");
+    background-position: 0 -66px;
+    height: 13px;
+    width: 13px;
+    float: right;
+    margin: 1px 0 0 10px;
+  }
+}
+
+.lt-ie8 {
+  body > * {
+    display: none !important;
+  }
+  #wrap-ie7 {
+    padding-top: 150px;
+    text-align: left;
+    display: block !important;
+    position: fixed !important;
+    top: 0 !important;
+    left: 50% !important;
+    width: 1000px !important;
+    margin-left: -500px;
+  }
+  img {
+    float: left;
+    width: 600px;
+  }
+  h1, p, a {
+    display: inline-block;
+    position: relative;
+    left: -100px;
+    margin: 15px 0;
+  }
+  h1 {
+    padding-top: 28px !important;
+  }
+  p {
+    margin: 5px 0;
+  }
+}

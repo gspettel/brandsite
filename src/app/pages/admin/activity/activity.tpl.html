@@ -1,0 +1,195 @@
+<div id="wrap-page-activity">
+
+  <div id="wrap-page-title" class="skycom-container">
+
+        <h1 class="section-title">Admin</h1>
+
+        <div id="base-styles-tab-contents" class="tabpanel selected">
+            <section class="tabcontents tabs-container page-nav">
+                <ul class="nav tabs clearfix">
+                    <li class="tab selected">
+                      <a href="/admin/activity" class="skycom-ellipsis internal-link">Activity</a>
+                    </li>
+                    <li class="tab">
+                      <a href="/admin/access" class="skycom-ellipsis internal-link">Access</a>
+                    </li>
+                    <li class="tab">
+                      <a href="/admin/assets/awaiting" class="skycom-ellipsis internal-link">Approve</a>
+                    </li>
+                    <li class="tab">
+                      <a data-ng-href="/content/page/?news={{notifications.total}}" target="_self" class="skycom-ellipsis internal-link" data-tracking="false">Edit</a>
+                    </li>
+                    <li class="tab">
+                      <a href="/brandhub/view" class="skycom-ellipsis internal-link">Brand hub</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <h3 class="section-title hi">Hi <span data-ng-bind="modelService.user.first_name"></span>, check out todays activity dashboard</h3>
+
+  </div>
+
+  <div class="skycom-container">
+
+   <h3 class="pod-title first has-badge">Reported issues <span class="badge big count blue bounceIn animated ng-binding" data-ng-bind="issuesAwaiting.data.length">0</span></h3>
+      
+    <header class="clearfix">
+      <div class="skycom-3"><p class="cushioned">File name</p></div>
+      <div class="skycom-2"><p class="cushioned">Asset ID</p></div>
+      <div class="skycom-3 username"><p class="cushioned">User</p></div>
+      <div class="skycom-2"><p class="cushioned">Comment</p></div>
+      <div class="skycom-2"><p class="cushioned">Date added</p></div>
+    </header>
+  
+    <div class="grid issues  clearfix" data-ng-class="{'full': issuesAwaiting.more}">
+      <div class="ng-hide" data-ng-show="issuesAwaiting.data.length">
+        <div data-ng-repeat="issue in issuesAwaiting.data" data-ng-click="viewIssue(issue)" class="row clearfix">
+          <div class="skycom-3"><p class="cushioned" data-ng-bind="issue.data.asset.data.title" title="{{issue.data.asset.data.title}}"></p></div>
+          <div class="skycom-2"><p class="cushioned" data-ng-bind="issue.data.asset.id"></p></div>
+          <div class="skycom-3 username"><p class="cushioned" data-ng-bind="issue.data.owner.data.first_name + ' ' + issue.data.owner.data.last_name" ></p></div>
+          <div class="skycom-2">
+            <p class="cushioned" data-ng-bind="issue.data.summary"></p>
+          </div>
+          <div class="skycom-2">
+            <p class="cushioned" data-ng-bind="date(issue.created)"></p>
+          </div>
+        </div>
+      </div>
+      <div class="not-available" data-ng-show="!issuesAwaiting.data.length">
+        <span class="ng-hide" data-ng-show="issuesAwaiting.completed">There are no reported issues!</span>
+        <div data-ng-show="!issuesAwaiting.completed">
+          <div class="brandcon-loader"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="more clearfix" data-ng-show="!issuesAwaiting.more && issuesAwaiting.data.length> 5">
+      <a  href="javascript:void(0);" data-ng-click="issuesAwaiting.more = true">Show more <i class="icon colour skycon-chevron-down" aria-hidden="true"></i> </a>
+    </div>
+
+    <h3 class="pod-title first has-badge">Assets awaiting approval <span class="badge big count blue bounceIn animated ng-binding" data-ng-bind="assetsAwaiting.data.length">0</span></h3>
+      
+    <header class="clearfix">
+      <div class="skycom-3"><p class="cushioned">File name</p></div>
+      <div class="skycom-2"><p class="cushioned">Unique ID</p></div>
+      <div class="skycom-3 username"><p class="cushioned">User</p></div>
+      <div class="skycom-2"><p class="cushioned">Category</p></div>
+      <div class="skycom-2"><p class="cushioned">Date posted</p></div>
+    </header>
+  
+    <div class="grid awaiting  clearfix" data-ng-class="{'full': assetsAwaiting.more}">
+      <div class="ng-hide" data-ng-show="assetsAwaiting.data.length">
+        <div data-ng-repeat="asset in assetsAwaiting.data" data-ng-click="goto('awaiting')" class="row clearfix">
+          <div class="skycom-3"><p class="cushioned" data-ng-bind="asset.data.title"></p></div>
+          <div class="skycom-2"><p class="cushioned" data-ng-bind="asset.id"></p></div>
+          <div class="skycom-3 username"><p class="cushioned" data-ng-bind="asset.data.owner.data.first_name + ' ' + asset.data.owner.data.last_name" ></p></div>
+          <div class="skycom-2">
+            <p class="cushioned" data-ng-bind="asset.data.asset_main_category.data.title"></p>
+          </div>
+          <div class="skycom-2">
+            <p class="cushioned" data-ng-bind="date(asset.data.date_created)"></p>
+          </div>
+        </div>
+      </div>
+      <div class="not-available" data-ng-show="!assetsAwaiting.data.length">
+        <span class="ng-hide" data-ng-show="assetsAwaiting.completed">No new assets are available!</span>
+        <div data-ng-show="!assetsAwaiting.completed">
+          <div class="brandcon-loader"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="more clearfix" data-ng-show="!assetsAwaiting.more && assetsAwaiting.data.length> 5">
+      <a href="javascript:void(0);" data-ng-click="assetsAwaiting.more = true">Show more <i class="icon colour skycon-chevron-down" aria-hidden="true"></i> </a>
+    </div>
+
+    <div class="brandhub-title clearfix">
+      <h3 class="pod-title has-badge">Brand Hub requests <span class="badge big count blue bounceIn animated ng-binding" data-ng-bind="brandHubActivities.totalBookings">0</span></h3>
+    </div>
+      
+    <header class="clearfix">
+      <div class="skycom-3"><p class="cushioned">Name</p></div>
+      <div class="skycom-6"><p class="cushioned">Requested session</p></div>
+      <div class="skycom-3"><p class="cushioned">Campaign date</p></div>
+    </header>
+  
+
+    <div class="brand-hub grid clearfix" data-ng-class="{'full': brandHubActivities.more}">
+      <div class="ng-hide" data-ng-show="brandHubActivities.totalBookings">
+        <div class="wrap-day" data-ng-repeat="(day, bookings) in brandHubActivities.data" data-ng-click="goto('brandhub')" >
+          <div class="row clearfix" data-ng-repeat="slot in bookings">
+            <div class="skycom-3"><p class="cushioned" data-ng-bind="slot.first_name + ' ' + slot.last_name"></p></div>
+            <div class="skycom-6">
+              <p class="cushioned">
+                <span class="day" data-ng-bind="day + ' (' + slot.day + ')'"></span>
+                <span data-ng-bind="slot.starttime * 1000 | date:'HH:mm'"></span> - <span  data-ng-bind="slot.endtime * 1000 | date:'HH:mm'"></span>
+              </p>
+            </div>
+            <div class="skycom-3"><p class="cushioned" data-ng-bind="slot.date_in_market | checkEmpty"></p></div>
+          </div>
+        </div>
+      </div>
+      <div class="not-available" data-ng-show="!brandHubActivities.totalBookings">
+        <span class="ng-hide" data-ng-show="brandHubActivities.completed">No future bookings available for current month!</span>
+        <div data-ng-show="!brandHubActivities.completed">
+          <div class="brandcon-loader"></div>
+        </div>
+      </div>
+  </div>
+
+  <div class="more  clearfix" data-ng-show="!brandHubActivities.more && brandHubActivities.totalBookings > 5">
+    <div>
+      <a href="javascript:void(0);" data-ng-click="brandHubActivities.more = true">Show more <i class="icon colour skycon-chevron-down" aria-hidden="true"></i> </a>
+    </div>
+  </div>
+
+  <div class="clearfix">
+    <h3 class="pod-title has-badge">Asset activity (Read Only)<span class="badge big count blue bounceIn animated ng-binding" data-ng-bind="assetsActivities.data.length">0</span></h3>
+  </div>
+      
+  <header class="clearfix">
+    <div class="skycom-3"><p class="cushioned">File name</p></div>
+    <div class="skycom-2"><p class="cushioned">Unique ID</p></div>
+    <div class="skycom-3"><p class="cushioned">User</p></div>
+    <div class="skycom-2"><p class="cushioned">Date posted</p></div>
+    <div class="skycom-2"><p class="cushioned">Status</p></div>
+  </header>
+  
+  <div class="grid activity clearfix" data-ng-class="{'full': assetsActivities.more}">
+    <div class="ng-hide" data-ng-show="assetsActivities.data.length">
+      <div class="row clearfix" data-ng-repeat="asset in assetsActivities.data" data-ng-click="select(asset)" class=" ">
+        <div class="skycom-3"><p class="cushioned" data-ng-bind="asset.data.value.data.title"></p></div>
+        <div class="skycom-2"> <p class="cushioned" data-ng-bind="asset.data.value.id"></p></div>
+        <div class="skycom-3"> <p class="cushioned" data-ng-bind="asset.data.value.data.owner.data.first_name + ' ' + asset.data.value.data.owner.data.last_name"></p></div>
+        <div class="skycom-2">
+          <p class="cushioned" data-ng-bind="date(asset.data.date_created)"></p>
+        </div>
+        <div class="skycom-2"> <p class="cushioned" data-ng-bind="asset.data.type.replace('assets/', '')"></p></div>
+      </div>
+    </div>
+    <div class="not-available" data-ng-show="!assetsActivities.data.length">
+      <span class="ng-hide" data-ng-show="assetsActivities.completed">No new activities!</span>
+      <div data-ng-show="!assetsActivities.completed">
+        <div class="brandcon-loader"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="more clearfix" data-ng-show="!assetsActivities.more && assetsActivities.data.length> 5">
+    <div>
+      <a href="javascript:void(0);" data-ng-click="assetsActivities.more = true">Show more <i class="icon colour skycon-chevron-down" aria-hidden="true"></i> </a>
+    </div>
+  </div>
+
+  <div class="more clearfix" data-ng-show="assetsActivities.more">
+    <div>
+      <a href="javascript:void(0);" data-ng-click="moreAssetsActivities()">Load more <i class="icon colour skycon-chevron-down" aria-hidden="true"></i> </a>
+    </div>
+  </div>
+
+  </div>
+
+  <div data-goto-top data-track-element="#wrap-page-activity"></div>
+
+</div>
